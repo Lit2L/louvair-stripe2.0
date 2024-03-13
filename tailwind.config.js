@@ -1,3 +1,5 @@
+const { fontFamily } = require('tailwindcss/defaultTheme')
+
 /** @type {import('tailwindcss').Config} */
 module.exports = {
   content: [
@@ -60,7 +62,6 @@ module.exports = {
       },
       fontFamily: {
         syncopate: ['Syncopate', 'sans-serif'],
-        vietnam: ['Be_Vietnam_Pro', 'sans-serif'],
         sans: ['var(--font-sans)', ...fontFamily.sans]
       },
       keyframes: {

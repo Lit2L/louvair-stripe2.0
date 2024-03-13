@@ -56,7 +56,7 @@ export function BillingForm({ subscriptionPlan, className, ...props }: BillingFo
     >
       <Card>
         <CardHeader>
-          <CardTitle className='font-vietnam text-4xl tracking-wide '>Subscription Plan</CardTitle>
+          <CardTitle className='text-4xl tracking-wide '>Subscription Plan</CardTitle>
           <CardDescription>
             You are currently on the <strong>{subscriptionPlan.name}</strong> plan.
           </CardDescription>

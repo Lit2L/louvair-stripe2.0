@@ -8,7 +8,7 @@ import { siteConfig } from '@/config/site'
 
 import { TailwindIndicator } from '@/components/tailwind-indicator'
 import { Toaster } from '@/components/ui/toaster'
-import { Be_Vietnam_Pro, Syncopate } from 'next/font/google'
+import { Syncopate } from 'next/font/google'
 import { cn } from '@/utils/cn'
 
 const fontSans = FontSans({
@@ -23,13 +23,6 @@ const syncopate = Syncopate({
   variable: '--font-syncopate'
 })
 
-const vietnam = Be_Vietnam_Pro({
-  weight: ['100', '200', '300', '400', '500', '600', '700', '800', '900'],
-  style: ['normal'],
-  subsets: ['latin'],
-  variable: '--font-vietnam'
-})
-
 export const metadata = {
   title: {
     default: siteConfig.name,
@@ -39,7 +32,7 @@ export const metadata = {
   keywords: ['Next.js', 'React', 'Tailwind CSS', 'Server Components', 'Radix UI'],
   authors: [
     {
-      name: 'shadcn',
+      name: 'Lit2L',
       url: 'https://shadcn.com'
     }
   ],
@@ -79,9 +72,7 @@ export default function RootLayout({ children }: RootLayoutProps) {
   return (
     <html lang='en'>
       <head />
-      <body
-        className={cn('bg-background', syncopate.variable, vietnam.variable, fontSans.variable)}
-      >
+      <body className={cn('bg-background', syncopate.className, fontSans.variable)}>
         <ThemeProvider
           attribute='class'
           defaultTheme='dark'
