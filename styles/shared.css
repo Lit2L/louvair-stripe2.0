@@ -1,0 +1,73 @@
+body {
+  text-size-adjust: 100%;
+  text-rendering: optimizeSpeed;
+  min-height: 100vh;
+  font-family: 'Syncopate', sans-serif;
+  font-weight: 400;
+  scroll-behavior: smooth;
+  overscroll-behavior: none;
+  overflow: hidden;
+}
+
+.icon {
+  height: 16px;
+  width: 16px;
+  margin-right: 10px;
+}
+
+.content-width {
+  width: 100vw;
+  max-width: 100vw;
+}
+
+.center {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* .anim {
+  overflow: hidden;
+} */
+
+.row {
+  display: flex;
+  flex-direction: row;
+}
+
+.column {
+  display: flex;
+  flex-direction: column;
+}
+
+.parent {
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: repeat(3, 1fr);
+  grid-column-gap: 0px;
+  grid-row-gap: 0px;
+}
+
+/* Gradient in Hex */
+.theme-gradient {
+  background: linear-gradient(
+    to right,
+    #b6b6c2 0%,
+    28.270676732063293%,
+    #714b5a 56.54135346412659%,
+    78.2706767320633%,
+    #53515c 100%
+  );
+}
+
+.theme-gradient-rgba {
+  background: linear-gradient(
+    to right,
+    rgba(182, 182, 194, 1) 0%,
+    28.270676732063293%,
+    rgba(113, 75, 90, 1) 56.54135346412659%,
+    78.2706767320633%,
+    rgba(83, 81, 92, 1) 100%
+  );
+}
+/* Gradient in RGBA */
