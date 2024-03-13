@@ -130,7 +130,7 @@ const BurgerNav = () => {
               </li>
             </Link>
 
-            <Link href='/home/pricing'>
+            <Link href='/pricing'>
               <li
                 onClick={() => setNav(false)}
                 className={`${

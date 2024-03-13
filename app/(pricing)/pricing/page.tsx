@@ -49,7 +49,10 @@ export default function PricingPage() {
             <h4 className='text-7xl font-bold'>$110</h4>
             <p className='text-sm font-medium text-muted-foreground'>Billed Monthly</p>
           </div>
-          <Link href='/login' className={cn(buttonVariants({ size: 'lg' }))}>
+          <Link
+            href='/login'
+            className={cn(buttonVariants({ size: 'lg' }))}
+          >
             Get Started
           </Link>
         </div>
