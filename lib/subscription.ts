@@ -5,8 +5,6 @@ import { freePlan, proPlan } from '@/config/subscriptions'
 import { db } from '@/lib/db'
 
 export async function getUserSubscriptionPlan(userId: string): Promise<UserSubscriptionPlan> {
-  console.log('Fetching subscription plan for the userId:', userId)
-
   const user = await db.user.findFirst({
     where: {
       id: userId

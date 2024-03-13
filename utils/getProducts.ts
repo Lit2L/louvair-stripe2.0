@@ -1,5 +1,6 @@
 import Stripe from 'stripe'
 import { env } from '@/env.mjs'
+
 export default async function getProducts() {
   const stripe = new Stripe(env.STRIPE_API_KEY as string, {
     apiVersion: '2022-11-15'

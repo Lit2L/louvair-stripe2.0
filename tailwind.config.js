@@ -60,7 +60,8 @@ module.exports = {
       },
       fontFamily: {
         syncopate: ['Syncopate', 'sans-serif'],
-        vietnam: ['Be Vietnam Pro', 'sans-serif']
+        vietnam: ['Be_Vietnam_Pro', 'sans-serif'],
+        sans: ['var(--font-sans)', ...fontFamily.sans]
       },
       keyframes: {
         'accordion-down': {

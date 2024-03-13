@@ -30,7 +30,7 @@ export function UserAccountNav({ user }: UserAccountNavProps) {
       <DropdownMenuContent align='end'>
         <div className='flex items-center justify-start gap-2 p-2'>
           <div className='flex flex-col space-y-1 leading-none'>
-            <div className='my-1'>
+            <div className='my-2'>
               <ThemeToggleButton />
             </div>
             {user.name && <p className='font-medium'>{user.name}</p>}

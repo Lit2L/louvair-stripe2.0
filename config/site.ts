@@ -1,12 +1,12 @@
 // import { env } from '@/env.mjs'
 import { SiteConfig } from 'types'
 
-const site_url = process.env.NEXT_PUBLIC_APP_URL
+const site_url = 'https://louvair.com'
 
 export const siteConfig: SiteConfig = {
   name: 'Louvair',
   description: 'Full Admin control over ecommerce platform.',
-  url: site_url || 'http://localhost:3000',
+  url: site_url || 'https://louvair.com',
   ogImage: `${site_url}/og.jpg`,
   links: {
     facebook: 'https://twitter.com/',
