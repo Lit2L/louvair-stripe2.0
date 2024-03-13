@@ -1,5 +1,3 @@
-import Link from 'next/link'
-
 import { cn } from '@/lib/utils'
 import { Button, buttonVariants } from '@/components/ui/button'
 import { Icons } from '@/components/shared/icons'
@@ -7,6 +5,7 @@ import { UserAuthForm } from '@/components/user-auth-form'
 import { Suspense } from 'react'
 import { Logo } from '@/components/icons/Logo'
 import { ChevronRight } from 'lucide-react'
+import Link from 'next/link'
 
 export const metadata = {
   title: 'Create an account',
@@ -32,20 +31,8 @@ export default function RegisterPage() {
 
           <p className='px-8 text-center text-sm text-muted-foreground'>
             By clicking continue, you agree to our{' '}
-            <Link
-              href='/terms'
-              className='hover:text-brand underline underline-offset-4'
-            >
-              Terms of Service
-            </Link>{' '}
-            and{' '}
-            <Link
-              href='/privacy'
-              className='hover:text-brand underline underline-offset-4'
-            >
-              Privacy Policy
-            </Link>
-            .
+            <p className='hover:text-brand underline underline-offset-4'>Terms of Service</p> and{' '}
+            <p className='hover:text-brand underline underline-offset-4'>Privacy Policy</p>.
           </p>
           <Button
             className={cn(
@@ -53,7 +40,7 @@ export default function RegisterPage() {
               'w-full bg-neutral-800 font-sans text-neutral-300'
             )}
           >
-            <a href='/login'>
+            <Link href='/login'>
               <span className='text-center justify-center font-thin tracking-wide h-full w-full flex items-center hover:underline '>
                 Continue to Login
                 <ChevronRight
@@ -61,7 +48,7 @@ export default function RegisterPage() {
                   size={30}
                 />
               </span>
-            </a>
+            </Link>
           </Button>
         </div>
       </div>

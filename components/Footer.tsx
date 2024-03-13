@@ -8,9 +8,17 @@ export default function Footer() {
     <footer className='mx-auto max-w-[1920px] px-6 pt-6 bg-zinc-900'>
       <div className='grid grid-cols-1 gap-8 py-12 text-white transition-colors duration-150 border-b lg:grid-cols-12 border-zinc-600 bg-zinc-900'>
         <div className='col-span-1 lg:col-span-2'>
-          <Link href='/' className='flex items-center flex-initial font-bold md:mr-24'>
+          <Link
+            href='/'
+            className='flex items-center flex-initial font-bold md:mr-24'
+          >
             <span className='mr-2 border rounded-full border-zinc-700'>
-              <Image src={Louvair} alt='Louvair Logo' width={40} height={40} />
+              <Image
+                src={Louvair}
+                alt='Louvair Logo'
+                width={40}
+                height={40}
+              />
             </span>
             <span className='font-bold text-xl'>L&apos;</span>
             <span className='text-sm font-bold'>ouvair</span>
@@ -60,20 +68,14 @@ export default function Footer() {
               </p>
             </li>
             <li className='py-3 md:py-0 md:pb-4'>
-              <Link
-                href='/'
-                className='text-white transition duration-150 ease-in-out hover:text-zinc-200'
-              >
+              <p className='text-white transition duration-150 ease-in-out hover:text-zinc-200'>
                 Privacy Policy
-              </Link>
+              </p>
             </li>
             <li className='py-3 md:py-0 md:pb-4'>
-              <Link
-                href='/'
-                className='text-white transition duration-150 ease-in-out hover:text-zinc-200'
-              >
+              <p className='text-white transition duration-150 ease-in-out hover:text-zinc-200'>
                 Terms of Use
-              </Link>
+              </p>
             </li>
           </ul>
         </div>
@@ -86,7 +88,10 @@ export default function Footer() {
         </div>
         <div className='flex items-center'>
           <span className='text-white text-xs px-3'>Crafted by</span>
-          <a href='https://vercel.com' aria-label='Logo Link'>
+          <a
+            href='https://vercel.com'
+            aria-label='Logo Link'
+          >
             <Image
               src={Louvair}
               height={20}
