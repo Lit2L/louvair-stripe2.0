@@ -1,0 +1,30 @@
+.loading-svg path {
+	fill: #0d0e13;
+}
+
+.loading-container svg {
+	height: 7.5vw;
+	background: #e4e0db;
+}
+
+.loading-container rect {
+	fill: #38383b;
+	transition: 2s;
+}
+
+.loading-container {
+	background: black;
+	width: 100%;
+	position: absolute;
+	top: 0;
+	z-index: 999;
+	transform-origin: center;
+	height: calc(100% + 50px);
+	padding-bottom: 250px;
+	clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
+	border: 5px solid #0d0e13;
+}
+
+.loading-transition {
+	transition: 1.1s cubic-bezier(0.6, 0, 0.25, 1);
+}
