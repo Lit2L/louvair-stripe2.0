@@ -22,7 +22,7 @@ import {
   Trash,
   User,
   X,
-  LucideIcon
+  Icon as LucideIcon
 } from 'lucide-react'
 
 export type Icon = LucideIcon

@@ -13,7 +13,7 @@ import {
   CardTitle
 } from '@/components/ui/card'
 import { toast } from '@/components/ui/use-toast'
-import { Icons } from '@/components/icons'
+import { Disc } from 'lucide-react'
 
 interface BillingFormProps extends React.HTMLAttributes<HTMLFormElement> {
   subscriptionPlan: UserSubscriptionPlan & {
@@ -68,7 +68,7 @@ export function BillingForm({ subscriptionPlan, className, ...props }: BillingFo
             className={cn(buttonVariants())}
             disabled={isLoading}
           >
-            {isLoading && <Icons.spinner className='mr-2 h-4 w-4 animate-spin' />}
+            {isLoading && <Disc className='mr-2 h-4 w-4 animate-spin' />}
             {subscriptionPlan.isPro ? 'Manage Subscription' : 'Upgrade to PRO'}
           </button>
           {subscriptionPlan.isPro ? (

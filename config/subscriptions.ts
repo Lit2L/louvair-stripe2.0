@@ -1,5 +1,4 @@
 import { SubscriptionPlan } from 'types'
-import { env } from '@/env.mjs'
 
 export const freePlan: SubscriptionPlan = {
   name: 'Free',
@@ -11,7 +10,7 @@ export const proPlan: SubscriptionPlan = {
   name: 'PRO',
   description:
     'The PRO plan has means you get one air diffuser and one monthly refill of a oil fragrance of your choice.',
-  stripePriceId: env.STRIPE_PRO_MONTHLY_PLAN_ID
+  stripePriceId: process.env.STRIPE_PRO_MONTHLY_PLAN_ID as string
 }
 
 // import { SubscriptionPlan } from 'types'

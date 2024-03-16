@@ -6,14 +6,14 @@ import { zodResolver } from '@hookform/resolvers/zod'
 import { signIn } from 'next-auth/react'
 import { useForm } from 'react-hook-form'
 import * as z from 'zod'
-
+import { Disc } from 'lucide-react'
 import { cn } from '@/lib/utils'
 import { userAuthSchema } from '@/lib/validations/auth'
 import { buttonVariants } from '@/components/ui/button'
 import { Input } from '@/components/ui/input'
 import { Label } from '@/components/ui/label'
 import { toast } from '@/components/ui/use-toast'
-import { Icons } from '@/components/icons'
+
 import { TbBrandGoogle } from 'react-icons/tb'
 
 interface UserAuthFormProps extends React.HTMLAttributes<HTMLDivElement> {}
@@ -87,7 +87,7 @@ export function UserAuthForm({ className, ...props }: UserAuthFormProps) {
             className={cn(buttonVariants())}
             disabled={isLoading || true}
           >
-            {isLoading && <Icons.spinner className='mr-2 h-4 w-4 animate-spin' />}
+            {isLoading && <Disc className='mr-2 h-4 w-4 animate-spin' />}
             Sign In with Email
           </button>
         </div>
@@ -110,7 +110,7 @@ export function UserAuthForm({ className, ...props }: UserAuthFormProps) {
         disabled={isLoading || isGoogleLoading}
       >
         {isGoogleLoading ? (
-          <Icons.spinner className='mr-2 h-4 w-4 animate-spin' />
+          <Disc className='mr-2 h-4 w-4 animate-spin' />
         ) : (
           <TbBrandGoogle className='mr-2 h-4 w-4' />
         )}{' '}

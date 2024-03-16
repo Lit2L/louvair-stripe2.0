@@ -2,7 +2,7 @@ import Link from 'next/link'
 
 import { cn } from '@/lib/utils'
 import { buttonVariants } from '@/components/ui/button'
-import { Icons } from '@/components/icons'
+import { Check } from 'lucide-react'
 
 export const metadata = {
   title: 'Pricing'
@@ -24,23 +24,23 @@ export default function PricingPage() {
           <h3 className='text-xl font-bold sm:text-2xl'>What&apos;s included in the PRO plan</h3>
           <ul className='grid gap-3 text-sm text-muted-foreground sm:grid-cols-2'>
             <li className='flex items-center'>
-              <Icons.check className='mr-2 h-4 w-4' /> Unlimited Posts
+              <Check className='mr-2 h-4 w-4' /> Unlimited Posts
             </li>
             <li className='flex items-center'>
-              <Icons.check className='mr-2 h-4 w-4' /> Unlimited Users
+              <Check className='mr-2 h-4 w-4' /> Unlimited Users
             </li>
 
             <li className='flex items-center'>
-              <Icons.check className='mr-2 h-4 w-4' /> Custom domain
+              <Check className='mr-2 h-4 w-4' /> Custom domain
             </li>
             <li className='flex items-center'>
-              <Icons.check className='mr-2 h-4 w-4' /> Dashboard Analytics
+              <Check className='mr-2 h-4 w-4' /> Dashboard Analytics
             </li>
             <li className='flex items-center'>
-              <Icons.check className='mr-2 h-4 w-4' /> Access to Discord
+              <Check className='mr-2 h-4 w-4' /> Access to Discord
             </li>
             <li className='flex items-center'>
-              <Icons.check className='mr-2 h-4 w-4' /> Premium Support
+              <Check className='mr-2 h-4 w-4' /> Premium Support
             </li>
           </ul>
         </div>

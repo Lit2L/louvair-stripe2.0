@@ -7,9 +7,10 @@ import { useSelectedLayoutSegment } from 'next/navigation'
 import { MainNavItem } from 'types'
 import { siteConfig } from '@/config/site'
 import { cn } from '@/lib/utils'
-import { Icons } from '@/components/icons'
+
 import { MobileNav } from '@/components/mobile-nav'
 import { Logo } from './icons/Logo'
+import { MdClose } from 'react-icons/md'
 
 interface MainNavProps {
   items?: MainNavItem[]
@@ -50,7 +51,7 @@ export function MainNav({ items, children }: MainNavProps) {
         className='flex items-center space-x-2 md:hidden'
         onClick={() => setShowMobileMenu(!showMobileMenu)}
       >
-        {showMobileMenu ? <Icons.close /> : <Icons.logo />}
+        {showMobileMenu ? <MdClose /> : <Logo />}
         <span className='font-bold'>Menu</span>
       </button>
       {showMobileMenu && items && <MobileNav items={items}>{children}</MobileNav>}
