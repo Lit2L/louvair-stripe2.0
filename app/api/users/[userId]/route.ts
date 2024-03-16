@@ -1,7 +1,6 @@
-import { getServerSession } from 'next-auth/next'
 import { z } from 'zod'
 
-import { authOptions } from '@/lib/auth'
+import { getUserByClerkId } from '@/lib/auth'
 import { db } from '@/lib/db'
 import { userNameSchema } from '@/lib/validations/user'
 
@@ -17,8 +16,8 @@ export async function PATCH(req: Request, context: z.infer<typeof routeContextSc
     const { params } = routeContextSchema.parse(context)
 
     // Ensure user is authentication and has access to this user.
-    const session = await getServerSession(authOptions)
-    if (!session?.user || params.userId !== session?.user.id) {
+    const user = await getUserByClerkId()
+    if (!user || params.userId !== user.id) {
       return new Response(null, { status: 403 })
     }
 
@@ -29,7 +28,7 @@ export async function PATCH(req: Request, context: z.infer<typeof routeContextSc
     // Update the user.
     await db.user.update({
       where: {
-        id: session.user.id
+        id: user.id
       },
       data: {
         name: payload.name

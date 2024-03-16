@@ -22,10 +22,10 @@ import {
   Trash,
   User,
   X,
-  Icon as LucideIcon
+  XIcon as LucideXIcon
 } from 'lucide-react'
 
-export type Icon = LucideIcon
+export type Icon = keyof typeof Icons
 
 export const Icons = {
   add: Plus,

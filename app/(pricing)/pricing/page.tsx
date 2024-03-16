@@ -3,12 +3,15 @@ import Link from 'next/link'
 import { cn } from '@/lib/utils'
 import { buttonVariants } from '@/components/ui/button'
 import { Check } from 'lucide-react'
+import { currentUser } from '@clerk/nextjs'
 
 export const metadata = {
   title: 'Pricing'
 }
 
 export default function PricingPage() {
+  const user = currentUser()
+
   return (
     <section className='container flex flex-col md:max-w-[64rem] pt-24'>
       <div className='mx-auto flex w-full flex-col gap-4 md:max-w-[58rem]'>
@@ -49,12 +52,15 @@ export default function PricingPage() {
             <h4 className='text-7xl font-bold'>$110</h4>
             <p className='text-sm font-medium text-muted-foreground'>Billed Monthly</p>
           </div>
-          <Link
-            href='/login'
-            className={cn(buttonVariants({ size: 'lg' }))}
-          >
-            Get Started
-          </Link>
+
+          <div className=''>
+            <Link
+              href='https://buy.stripe.com/test_4gweYf8I4dyo1DqaEH'
+              className={cn(buttonVariants({ size: 'lg' }))}
+            >
+              Get Started
+            </Link>
+          </div>
         </div>
       </div>
       <div className='mx-auto flex w-full max-w-[58rem] mt-6 rounded flex-col  justify-center items-center bg-neutral-600  border-2 gap-4'>

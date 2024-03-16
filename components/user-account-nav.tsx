@@ -1,9 +1,7 @@
-'use client'
-
 import Link from 'next/link'
-import { User } from 'next-auth'
-import { signOut } from 'next-auth/react'
+import { SignOutButton } from '@clerk/nextjs'
 
+import { cn } from '@/lib/utils'
 import {
   DropdownMenu,
   DropdownMenuContent,
@@ -12,55 +10,87 @@ import {
   DropdownMenuTrigger
 } from '@/components/ui/dropdown-menu'
 import { UserAvatar } from '@/components/user-avatar'
+
+import { Icons } from './shared/icons'
+import { buttonVariants } from './ui/button'
 import { ThemeToggleButton } from './theme-toggle-button'
+import { LogOut } from 'lucide-react'
 
 interface UserAccountNavProps extends React.HTMLAttributes<HTMLDivElement> {
-  user: Pick<User, 'name' | 'image' | 'email'>
+  user: {
+    name: string
+    email: string
+    image: string
+  }
 }
 
 export function UserAccountNav({ user }: UserAccountNavProps) {
   return (
     <DropdownMenu>
+      <div className='my-2'>
+        <ThemeToggleButton />
+      </div>
       <DropdownMenuTrigger>
         <UserAvatar
-          user={{ name: user.name || null, image: user.image || null }}
+          user={{ name: user.name, image: user.image }}
           className='h-8 w-8'
         />
       </DropdownMenuTrigger>
       <DropdownMenuContent align='end'>
         <div className='flex items-center justify-start gap-2 p-2'>
           <div className='flex flex-col space-y-1 leading-none'>
-            <div className='my-2'>
-              <ThemeToggleButton />
-            </div>
             {user.name && <p className='font-medium'>{user.name}</p>}
             {user.email && (
               <p className='w-[200px] truncate text-sm text-muted-foreground'>{user.email}</p>
             )}
           </div>
         </div>
-
         <DropdownMenuSeparator />
         <DropdownMenuItem asChild>
-          <Link href='/dashboard'>Dashboard</Link>
+          <Link
+            href='/journal/settings/user-profile'
+            className='cursor-pointer'
+          >
+            <Icons.user
+              className='mr-2 h-4 w-4'
+              aria-hidden='true'
+            />
+            Account
+          </Link>
         </DropdownMenuItem>
         <DropdownMenuItem asChild>
-          <Link href='/dashboard/billing'>Billing</Link>
+          <Link
+            href='/journal'
+            className='cursor-pointer'
+          >
+            <Icons.post
+              className='mr-2 h-4 w-4'
+              aria-hidden='true'
+            />
+            Journal
+          </Link>
         </DropdownMenuItem>
         <DropdownMenuItem asChild>
-          <Link href='/dashboard/settings'>Settings</Link>
+          <Link
+            href='/journal/settings'
+            className='cursor-pointer'
+          >
+            <Icons.settings
+              className='mr-2 h-4 w-4'
+              aria-hidden='true'
+            />
+            Settings
+          </Link>
         </DropdownMenuItem>
         <DropdownMenuSeparator />
-        <DropdownMenuItem
-          className='cursor-pointer'
-          onSelect={(event) => {
-            event.preventDefault()
-            signOut({
-              callbackUrl: `${window.location.origin}/login`
-            })
-          }}
-        >
-          Sign out
+        <DropdownMenuItem>
+          <LogOut
+            className='mr-2 h-4 w-4'
+            aria-hidden='true'
+          />
+          <SignOutButton>
+            <button>Sign Out</button>
+          </SignOutButton>
         </DropdownMenuItem>
       </DropdownMenuContent>
     </DropdownMenu>

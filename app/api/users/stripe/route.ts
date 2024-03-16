@@ -1,23 +1,22 @@
-import { getServerSession } from 'next-auth/next'
 import { z } from 'zod'
 
 import { proPlan } from '@/config/subscriptions'
-import { authOptions } from '@/lib/auth'
+import { getUserByClerkId } from '@/lib/auth'
 import { stripe } from '@/lib/stripe'
 import { getUserSubscriptionPlan } from '@/lib/subscription'
 import { absoluteUrl } from '@/lib/utils'
 
-const billingUrl = absoluteUrl('/dashboard/billing')
+const billingUrl = absoluteUrl('/journal/billing')
 
 export async function GET(req: Request) {
   try {
-    const session = await getServerSession(authOptions)
+    const user = await getUserByClerkId()
 
-    if (!session?.user || !session?.user.email) {
+    if (!user || !user.email) {
       return new Response(null, { status: 403 })
     }
 
-    const subscriptionPlan = await getUserSubscriptionPlan(session.user.id)
+    const subscriptionPlan = await getUserSubscriptionPlan(user.id)
 
     // The user is on the pro plan.
     // Create a portal session to manage subscription.
@@ -38,7 +37,7 @@ export async function GET(req: Request) {
       payment_method_types: ['card'],
       mode: 'subscription',
       billing_address_collection: 'auto',
-      customer_email: session.user.email,
+      customer_email: user.email,
       line_items: [
         {
           price: proPlan.stripePriceId,
@@ -46,7 +45,7 @@ export async function GET(req: Request) {
         }
       ],
       metadata: {
-        userId: session.user.id
+        userId: user.id
       }
     })
 

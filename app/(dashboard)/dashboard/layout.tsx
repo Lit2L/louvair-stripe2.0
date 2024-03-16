@@ -1,24 +1,21 @@
-import { notFound, redirect } from 'next/navigation'
-
 import { dashboardConfig } from '@/config/dashboard'
-import { getServerSession } from 'next-auth'
+
 import { MainNav } from '@/components/main-nav'
 import { DashboardNav } from '@/components/nav'
 import { SiteFooter } from '@/components/site-footer'
-import { UserAccountNav } from '@/components/user-account-nav'
-import { getCurrentUser } from '@/lib/session'
-import { authOptions } from '@/lib/auth'
+import { auth, currentUser, SignedIn, UserButton } from '@clerk/nextjs'
+import { redirect } from 'next/navigation'
 
 interface DashboardLayoutProps {
   children?: React.ReactNode
 }
 
 export default async function DashboardLayout({ children }: DashboardLayoutProps) {
-  // const user = await getCurrentUser()
-  const user = await getCurrentUser()
+  const user = await currentUser()
 
   if (!user) {
-    redirect(authOptions?.pages?.signIn || '/login')
+    // return notFound()
+    redirect('/sign-in')
   }
 
   return (
@@ -26,13 +23,11 @@ export default async function DashboardLayout({ children }: DashboardLayoutProps
       <header className='sticky top-0 z-40 border-b bg-background'>
         <div className='container flex h-16 items-center justify-between py-4'>
           <MainNav items={dashboardConfig.mainNav} />
-          <UserAccountNav
-            user={{
-              name: user.name,
-              image: user.image,
-              email: user.email
-            }}
-          />
+          {user && (
+            <SignedIn>
+              <UserButton afterSignOutUrl='/' />
+            </SignedIn>
+          )}
         </div>
       </header>
       <div className='container grid flex-1 gap-12 md:grid-cols-[200px_1fr]'>

@@ -1,14 +1,15 @@
 import { redirect } from 'next/navigation'
-import { authOptions } from '@/lib/auth'
-import { getCurrentUser } from '@/lib/session'
+import { currentUser } from '@clerk/nextjs'
 import { stripe } from '@/lib/stripe'
-import { getUserSubscriptionPlan } from '@/lib/subscription'
 import { Alert, AlertDescription, AlertTitle } from '@/components/ui/alert'
 import { BillingForm } from '@/components/billing-form'
 import { DashboardHeader } from '@/components/dashboard/header'
 import { Icons } from '@/components/shared/icons'
 import { DashboardShell } from '@/components/dashboard/shell'
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card'
+import { SubscriptionDetails } from '@/components/subscription-details'
+import { SubscriptionWithProduct } from '@/types/subscriptions'
+import { getUserSubscription } from '@/lib/subscriptions'
 
 export const metadata = {
   title: 'Billing',
@@ -16,21 +17,13 @@ export const metadata = {
 }
 
 export default async function BillingPage() {
-  const user = await getCurrentUser()
-  console.log('user from billing page', user)
+  const user = await currentUser()
 
   if (!user) {
-    redirect(authOptions?.pages?.signIn || '/login')
+    redirect('/sign-in')
   }
 
-  const subscriptionPlan = await getUserSubscriptionPlan(user.id)
-
-  // if user has a pro plan, check cancel status on stripe.
-  let isCanceled = false
-  if (subscriptionPlan.isPro && subscriptionPlan.stripeSubscriptionId) {
-    const stripePlan = await stripe.subscriptions.retrieve(subscriptionPlan.stripeSubscriptionId)
-    isCanceled = stripePlan.cancel_at_period_end
-  }
+  const sub = await getUserSubscription()
 
   return (
     <DashboardShell>
@@ -38,6 +31,8 @@ export default async function BillingPage() {
         heading='Billing'
         text='Manage billing and your subscription plan.'
       />
+      <div className='grid gap-10'>Your subscription details:</div>
+      <SubscriptionDetails subscription={sub as SubscriptionWithProduct} />
       <div className='grid gap-8'>
         <Alert className='!pl-14'>
           <Icons.warning />
@@ -71,12 +66,12 @@ export default async function BillingPage() {
             .
           </AlertDescription>
         </Alert>
-        <BillingForm
+        {/* <BillingForm
           subscriptionPlan={{
             ...subscriptionPlan,
             isCanceled
           }}
-        />
+        /> */}
       </div>
     </DashboardShell>
   )
