@@ -1,9 +1,11 @@
+import * as React from 'react'
 import {
   AlertTriangle,
   ArrowRight,
   Check,
   ChevronLeft,
   ChevronRight,
+  Command,
   CreditCard,
   File,
   FileText,
@@ -11,31 +13,40 @@ import {
   Image,
   Laptop,
   Loader2,
-  LucideProps,
   Moon,
   MoreVertical,
+  Pizza,
   Plus,
-  Puzzle,
-  Search,
   Settings,
   SunMedium,
   Trash,
   User,
   X,
-  Icon as LucideIcon
+  type LucideProps
 } from 'lucide-react'
 
-export type XIcon = LucideIcon
-
 export const Icons = {
-  add: Plus,
-  arrowRight: ArrowRight,
-  billing: CreditCard,
+  logo: Command,
+  close: X,
+  spinner: Loader2,
   chevronLeft: ChevronLeft,
   chevronRight: ChevronRight,
-  check: Check,
-  close: X,
+  trash: Trash,
+  post: FileText,
+  page: File,
+  media: Image,
+  settings: Settings,
+  billing: CreditCard,
   ellipsis: MoreVertical,
+  add: Plus,
+  warning: AlertTriangle,
+  user: User,
+  arrowRight: ArrowRight,
+  help: HelpCircle,
+  pizza: Pizza,
+  sun: SunMedium,
+  moon: Moon,
+  laptop: Laptop,
   gitHub: ({ ...props }: LucideProps) => (
     <svg
       aria-hidden='true'
@@ -53,52 +64,5 @@ export const Icons = {
       ></path>
     </svg>
   ),
-  google: ({ ...props }: LucideProps) => (
-    <svg
-      aria-hidden='true'
-      focusable='false'
-      data-prefix='fab'
-      data-icon='google'
-      role='img'
-      xmlns='http://www.w3.org/2000/svg'
-      viewBox='0 0 488 512'
-      {...props}
-    >
-      <path
-        d='M488 261.8C488 403.3 391.1 504 248 504 110.8 504 0 393.2 0 256S110.8 8 248 8c66.8 0 123 24.5 166.3 64.9l-67.5 64.9C258.5 52.6 94.3 116.6 94.3 256c0 86.5 69.1 156.6 153.7 156.6 98.2 0 135-70.4 140.8-106.9H248v-85.3h236.1c2.3 12.7 3.9 24.9 3.9 41.4z'
-        fill='currentColor'
-      />
-    </svg>
-  ),
-  help: HelpCircle,
-  laptop: Laptop,
-  logo: Puzzle,
-  media: Image,
-  moon: Moon,
-  page: File,
-  post: FileText,
-  search: Search,
-  settings: Settings,
-  spinner: Loader2,
-  sun: SunMedium,
-  trash: Trash,
-  twitter: ({ ...props }: LucideProps) => (
-    <svg
-      xmlns='http://www.w3.org/2000/svg'
-      viewBox='0 0 24 24'
-      aria-hidden='true'
-      focusable='false'
-      data-prefix='fab'
-      data-icon='twitter'
-      role='img'
-      {...props}
-    >
-      <path
-        d='M14.258 10.152L23.176 0h-2.113l-7.747 8.813L7.133 0H0l9.352 13.328L0 23.973h2.113l8.176-9.309 6.531 9.309h7.133zm-2.895 3.293l-.949-1.328L2.875 1.56h3.246l6.086 8.523.945 1.328 7.91 11.078h-3.246zm0 0'
-        fill='currentColor'
-      />
-    </svg>
-  ),
-  user: User,
-  warning: AlertTriangle
+  check: Check
 }

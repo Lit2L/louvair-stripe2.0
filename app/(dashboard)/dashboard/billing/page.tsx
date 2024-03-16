@@ -6,9 +6,9 @@ import { getUserSubscriptionPlan } from '@/lib/subscription'
 import { Alert, AlertDescription, AlertTitle } from '@/components/ui/alert'
 import { BillingForm } from '@/components/billing-form'
 import { DashboardHeader } from '@/components/dashboard/header'
-import { Icons } from '@/components/shared/icons'
 import { DashboardShell } from '@/components/dashboard/shell'
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card'
+import { FileWarning } from 'lucide-react'
 
 export const metadata = {
   title: 'Billing',
@@ -40,7 +40,7 @@ export default async function BillingPage() {
       />
       <div className='grid gap-8'>
         <Alert className='!pl-14'>
-          <Icons.warning />
+          <FileWarning />
           <AlertTitle>This is app is in demo mode.</AlertTitle>
           <AlertDescription>
             Louvair app is in TEST Mode using a Stripe test environment. Complete order with <br />{' '}

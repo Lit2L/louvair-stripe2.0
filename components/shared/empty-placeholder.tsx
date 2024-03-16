@@ -1,7 +1,8 @@
 import * as React from 'react'
 
 import { cn } from '@/lib/utils'
-import { Icons } from '@/components/shared/icons'
+import { Icons } from '@/components/icons'
+import { AxeIcon } from 'lucide-react'
 
 interface EmptyPlaceholderProps extends React.HTMLAttributes<HTMLDivElement> {}
 
@@ -23,7 +24,6 @@ export function EmptyPlaceholder({ className, children, ...props }: EmptyPlaceho
 
 interface EmptyPlaceholderIconProps extends Partial<React.SVGProps<SVGSVGElement>> {
   name: keyof typeof Icons
-  ref?: ((instance: SVGSVGElement | null) => void) | React.RefObject<SVGSVGElement> | null
 }
 
 EmptyPlaceholder.Icon = function EmptyPlaceHolderIcon({
@@ -38,8 +38,8 @@ EmptyPlaceholder.Icon = function EmptyPlaceHolderIcon({
   }
 
   return (
-    <div className='flex size-20 items-center justify-center rounded-full bg-muted'>
-      <Icon className={cn('size-10', className)} {...props} />
+    <div className='flex h-20 w-20 items-center justify-center rounded-full bg-muted'>
+      <AxeIcon />
     </div>
   )
 }
@@ -50,15 +50,20 @@ EmptyPlaceholder.Title = function EmptyPlaceholderTitle({
   className,
   ...props
 }: EmptyPlacholderTitleProps) {
-  return <h2 className={cn('mt-6 text-xl font-semibold', className)} {...props} />
+  return (
+    <h2
+      className={cn('mt-6 text-xl font-semibold', className)}
+      {...props}
+    />
+  )
 }
 
-interface EmptyPlaceholderDescriptionProps extends React.HTMLAttributes<HTMLParagraphElement> {}
+interface EmptyPlacholderDescriptionProps extends React.HTMLAttributes<HTMLParagraphElement> {}
 
 EmptyPlaceholder.Description = function EmptyPlaceholderDescription({
   className,
   ...props
-}: EmptyPlaceholderDescriptionProps) {
+}: EmptyPlacholderDescriptionProps) {
   return (
     <p
       className={cn(

@@ -1,9 +1,8 @@
 import { cn } from '@/lib/utils'
 import { Button, buttonVariants } from '@/components/ui/button'
-import { Icons } from '@/components/shared/icons'
 import { UserAuthForm } from '@/components/user-auth-form'
 import { Suspense } from 'react'
-import { Logo } from '@/components/icons/Logo'
+import { Logo } from '@/components/Logo'
 import { ChevronRight } from 'lucide-react'
 import Link from 'next/link'
 

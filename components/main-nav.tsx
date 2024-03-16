@@ -9,7 +9,7 @@ import { siteConfig } from '@/config/site'
 import { cn } from '@/lib/utils'
 
 import { MobileNav } from '@/components/mobile-nav'
-import { Logo } from './icons/Logo'
+import { Logo } from './Logo'
 import { MdClose } from 'react-icons/md'
 
 interface MainNavProps {

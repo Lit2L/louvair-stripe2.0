@@ -4,7 +4,7 @@ import React from 'react'
 import Link from 'next/link'
 import { TbBrandFacebookFilled } from 'react-icons/tb'
 import { AiOutlineClose, AiOutlineInstagram, AiOutlineMenu } from 'react-icons/ai'
-import { Logo } from '@/components/icons/Logo'
+import { Logo } from '@/components/Logo'
 import { ThemeToggleButton } from '../theme-toggle-button'
 import { motion } from 'framer-motion'
 

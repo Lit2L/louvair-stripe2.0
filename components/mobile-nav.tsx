@@ -5,7 +5,7 @@ import { MainNavItem } from 'types'
 import { siteConfig } from '@/config/site'
 import { cn } from '@/lib/utils'
 import { useLockBody } from '@/hooks/use-lock-body'
-import { Logo } from '@/components/icons/Logo'
+import { Logo } from '@/components/Logo'
 
 interface MobileNavProps {
   items: MainNavItem[]

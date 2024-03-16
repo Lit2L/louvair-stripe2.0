@@ -3,11 +3,11 @@ import Link from 'next/link'
 
 import { cn } from '@/lib/utils'
 import { buttonVariants } from '@/components/ui/button'
-import { Icons } from '@/components/shared/icons'
+
 import { UserAuthForm } from '@/components/user-auth-form'
 import { Suspense } from 'react'
-import { ChevronRight } from 'lucide-react'
-import { Logo } from '@/components/icons/Logo'
+import { ChevronLeft, ChevronRight } from 'lucide-react'
+import { Logo } from '@/components/Logo'
 
 export const metadata: Metadata = {
   title: 'Login',
@@ -37,13 +37,13 @@ export default function LoginPage() {
         )}
       >
         <>
-          <Icons.chevronLeft className='mr-2 size-4' />
+          <ChevronLeft className='mr-2 size-4' />
           Back
         </>
       </Link>
       <div className='mx-auto flex w-full flex-col justify-center space-y-6 sm:w-[350px]'>
         <div className='flex flex-col space-y-2 text-center'>
-          <Icons.logo className='mx-auto h-6 w-6' />
+          <Logo className='mx-auto h-6 w-6' />
           <h1 className='text-2xl font-semibold tracking-tight'>Welcome back</h1>
           <p className='text-sm text-muted-foreground'>
             Enter your email to sign in to your account
