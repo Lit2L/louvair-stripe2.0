@@ -119,14 +119,14 @@ const BurgerNav = () => {
                 Home
               </li>
             </Link>
-            <Link href='/products'>
+            <Link href='/dashboard'>
               <li
                 onClick={() => setNav(false)}
                 className={`${
                   nav ? 'translate-x-0 opacity-100 red-hover' : 'translate-x-[600px] opacity-0'
                 } text-3xl tracking-wider font-medium hover:cursor-pointer duration-1000 ease-in-out delay-&lsqb;.9s&rsqb`}
               >
-                Products
+                Dashboard
               </li>
             </Link>
 

@@ -3,8 +3,8 @@
   "version": "0.1.0",
   "private": true,
   "author": {
-    "name": "li2l",
-    "url": "https://twitter.com/li2l"
+    "name": "lit2l",
+    "url": "https://lit2l.com/lit2l"
   },
   "scripts": {
     "dev": "next dev",
@@ -17,6 +17,7 @@
     "email": "email dev --dir emails --port 3333"
   },
   "dependencies": {
+    "@clerk/nextjs": "^4.29.9",
     "@hookform/resolvers": "^3.1.0",
     "@next-auth/prisma-adapter": "^1.0.6",
     "@prisma/client": "^4.16.2",

@@ -25,7 +25,7 @@ import {
   Icon as LucideIcon
 } from 'lucide-react'
 
-export type Icon = LucideIcon
+export type XIcon = LucideIcon
 
 export const Icons = {
   add: Plus,
