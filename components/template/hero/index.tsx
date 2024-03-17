@@ -126,7 +126,7 @@ const Hero: FC = () => {
           <Link
             href='/dashboard'
             className={cn(
-              'flex items-center w-72 justify-center',
+              'flex items-center w-72 justify-center ease-in-out transition-all duration-300 hover:text-red-400',
               buttonVariants({ variant: 'secondary', size: 'sm' })
             )}
           >

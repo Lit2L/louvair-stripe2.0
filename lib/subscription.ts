@@ -1,14 +1,23 @@
 // @ts-nocheck
 // TODO: Fix this when we turn strict mode on.
 import { UserSubscriptionPlan } from '@/types'
+import { auth } from '@clerk/nextjs'
 
 import { freePlan, proPlan } from '@/config/subscriptions'
 import { db } from '@/lib/db'
 
-export async function getUserSubscriptionPlan(userId: string): Promise<UserSubscriptionPlan> {
-  const user = await db.user.findFirst({
+const DAY_IN_MS = 86_400_000
+
+export const checkSubscription = async () => {
+  const { userId } = auth()
+
+  if (!userId) {
+    return false
+  }
+
+  const userSubscription = await db.userSubscription.findUnique({
     where: {
-      id: userId
+      userId: userId
     },
     select: {
       stripeSubscriptionId: true,
@@ -18,20 +27,13 @@ export async function getUserSubscriptionPlan(userId: string): Promise<UserSubsc
     }
   })
 
-  if (!user) {
-    throw new Error('User not found')
+  if (!userSubscription) {
+    return false
   }
 
-  // Check if user is on a pro plan.
-  const isPro =
-    user.stripePriceId && user.stripeCurrentPeriodEnd?.getTime() + 86_400_000 > Date.now()
+  const isValid =
+    userSubscription.stripePriceId &&
+    userSubscription.stripeCurrentPeriodEnd?.getTime()! + DAY_IN_MS > Date.now()
 
-  const plan = isPro ? proPlan : freePlan
-
-  return {
-    ...plan,
-    ...user,
-    stripeCurrentPeriodEnd: user.stripeCurrentPeriodEnd?.getTime(),
-    isPro
-  }
+  return !!isValid
 }

@@ -9,7 +9,7 @@ import { siteConfig } from '@/config/site'
 import { cn } from '@/lib/utils'
 
 import { MobileNav } from '@/components/mobile-nav'
-import { Logo } from './icons/Logo'
+import { Logo } from './Logo'
 import { MdClose } from 'react-icons/md'
 
 interface MainNavProps {
@@ -27,7 +27,9 @@ export function MainNav({ items, children }: MainNavProps) {
         href='/'
         className='hidden items-center space-x-2 md:flex'
       >
-        <Logo />
+        <div className='h-10 w-10'>
+          <Logo />
+        </div>
         <span className='hidden font-bold sm:inline-block'>{siteConfig.name}</span>
       </Link>
       {items?.length ? (

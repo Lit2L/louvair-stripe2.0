@@ -1,6 +1,6 @@
 import '../styles/globals.css'
 import '../styles/shared.css'
-import { Syncopate, Be_Vietnam_Pro as FontSans, Be_Vietnam_Pro } from 'next/font/google'
+import { Syncopate, Be_Vietnam_Pro as FontSans, Be_Vietnam_Pro, Karla } from 'next/font/google'
 import { ThemeProvider } from '@/components/theme-provider'
 import { TailwindIndicator } from '@/components/tailwind-indicator'
 import { Toaster } from '@/components/ui/toaster'
@@ -21,6 +21,8 @@ const syncopate = Syncopate({
   variable: '--font-syncopate'
 })
 
+const karla = Karla({ subsets: ['latin'] })
+
 interface RootLayoutProps {
   children: React.ReactNode
 }
@@ -30,7 +32,9 @@ export default function RootLayout({ children }: RootLayoutProps) {
     <ClerkProvider>
       <html lang='en'>
         <head />
-        <body className={cn('bg-background', syncopate.variable, fontSans.className)}>
+        <body
+          className={cn('bg-background', syncopate.variable, fontSans.className, karla.className)}
+        >
           <ThemeProvider
             attribute='class'
             defaultTheme='dark'

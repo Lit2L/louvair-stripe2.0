@@ -4,7 +4,7 @@ import React from 'react'
 import Link from 'next/link'
 import { TbBrandFacebookFilled } from 'react-icons/tb'
 import { AiOutlineClose, AiOutlineInstagram, AiOutlineMenu } from 'react-icons/ai'
-import { Logo } from '@/components/icons/Logo'
+import { Logo } from '@/components/Logo'
 import { ThemeToggleButton } from './theme-toggle-button'
 import { motion } from 'framer-motion'
 
@@ -165,7 +165,7 @@ const BurgerNav = () => {
               </li>
             </Link>
             <div className='py-20 border-b h-16 w-full border-[#ba7339] text-center'>
-              <Link href='/login'>
+              <Link href='/sign-in'>
                 <li
                   onClick={() => setNav(false)}
                   className={`${

@@ -1,4 +1,3 @@
-import { redirect } from 'next/navigation'
 import { EmptyPlaceholder } from '@/components/shared/empty-placeholder'
 import { DashboardHeader } from '@/components/dashboard/header'
 import { DashboardShell } from '@/components/dashboard/shell'

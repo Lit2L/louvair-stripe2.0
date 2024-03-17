@@ -9,7 +9,7 @@ export const getUserByClerkId = async (): Promise<User | undefined> => {
     try {
       const user = await db.user.findUniqueOrThrow({
         where: {
-          clerkId: userId
+          clerkId: userId as string
         }
       })
 

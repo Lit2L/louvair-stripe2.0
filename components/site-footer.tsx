@@ -5,7 +5,7 @@ import { cn } from '@/lib/utils'
 
 import { ThemeToggleButton } from '@/components/theme-toggle-button'
 import Link from 'next/link'
-import { Logo } from './icons/Logo'
+import { Logo } from './Logo'
 
 export function SiteFooter({ className }: React.HTMLAttributes<HTMLElement>) {
   return (
