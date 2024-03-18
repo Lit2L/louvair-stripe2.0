@@ -2,14 +2,16 @@ import { EmptyPlaceholder } from '@/components/shared/empty-placeholder'
 import { DashboardHeader } from '@/components/dashboard/header'
 import { DashboardShell } from '@/components/dashboard/shell'
 import { Button } from '@/components/ui/button'
-import { auth, currentUser } from '@clerk/nextjs'
+
+import { Label } from '@/components/ui/label'
+import { getCurrentUser } from '@/lib/session'
 
 export const metadata = {
   title: 'Dashboard'
 }
 
 export default async function DashboardPage() {
-  const user = await currentUser()
+  const user = await getCurrentUser()
 
   if (!user) return <div className=''>Not signed in</div>
 
@@ -18,9 +20,8 @@ export default async function DashboardPage() {
       <DashboardHeader
         heading='Store'
         text='See the Louvair collection.'
-      >
-        <Button>{user?.firstName}</Button>
-      </DashboardHeader>
+      />
+
       <div>
         <EmptyPlaceholder>
           <EmptyPlaceholder.Icon name='post' />

@@ -1,7 +1,8 @@
 'use client'
 
 import * as React from 'react'
-import { UserSubscriptionPlan } from 'types'
+import { UserSubscriptionPlan } from '../types'
+
 import { cn, formatDate } from '@/lib/utils'
 import { buttonVariants } from '@/components/ui/button'
 import {
@@ -13,7 +14,7 @@ import {
   CardTitle
 } from '@/components/ui/card'
 import { toast } from '@/components/ui/use-toast'
-import { Disc } from 'lucide-react'
+import { Disc3 } from 'lucide-react'
 
 interface BillingFormProps extends React.HTMLAttributes<HTMLFormElement> {
   subscriptionPlan: UserSubscriptionPlan & {
@@ -56,7 +57,7 @@ export function BillingForm({ subscriptionPlan, className, ...props }: BillingFo
     >
       <Card>
         <CardHeader>
-          <CardTitle className='text-4xl tracking-wide '>Subscription Plan</CardTitle>
+          <CardTitle>Subscription Plan</CardTitle>
           <CardDescription>
             You are currently on the <strong>{subscriptionPlan.name}</strong> plan.
           </CardDescription>
@@ -68,7 +69,7 @@ export function BillingForm({ subscriptionPlan, className, ...props }: BillingFo
             className={cn(buttonVariants())}
             disabled={isLoading}
           >
-            {isLoading && <Disc className='mr-2 h-4 w-4 animate-spin' />}
+            {isLoading && <Disc3 className='mr-2 h-4 w-4 animate-spin' />}
             {subscriptionPlan.isPro ? 'Manage Subscription' : 'Upgrade to PRO'}
           </button>
           {subscriptionPlan.isPro ? (

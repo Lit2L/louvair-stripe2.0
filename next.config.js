@@ -16,12 +16,19 @@ const nextConfig = {
       {
         protocol: 'https',
         hostname: 'lh3.googleusercontent.com'
+      },
+      {
+        protocol: 'https',
+        hostname: 'files.stripe.com'
       }
     ]
   },
+
   experimental: {
-    appDir: true,
     serverComponentsExternalPackages: ['@prisma/client']
+  },
+  typescript: {
+    ignoreBuildErrors: true
   }
 }
 

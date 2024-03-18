@@ -1,10 +1,10 @@
 import { redirect } from 'next/navigation'
 
+import { authOptions } from '@/pages/api/auth/[...nextauth]'
+import { getCurrentUser } from '@/lib/session'
 import { DashboardHeader } from '@/components/dashboard/header'
-import { DashboardShell } from '@/components/dashboard/shell'
-import { UserNameForm } from '@/components/forms/user-name-form'
-import { checkSubscription } from '@/lib/subscription'
-import { SubscriptionButton } from '@/components/subscription-button'
+import { DashboardShell } from '@/components/shell'
+import { UserNameForm } from '@/components/user-name-form'
 
 export const metadata = {
   title: 'Settings',
@@ -12,7 +12,11 @@ export const metadata = {
 }
 
 export default async function SettingsPage() {
-  const isPro = await checkSubscription()
+  const user = await getCurrentUser()
+
+  if (!user) {
+    redirect(authOptions?.pages?.signIn || '/login')
+  }
 
   return (
     <DashboardShell>
@@ -21,12 +25,7 @@ export default async function SettingsPage() {
         text='Manage account and website settings.'
       />
       <div className='grid gap-10'>
-        <div className='text-muted-foreground'>
-          {isPro
-            ? 'You are currently on the Pro plan.'
-            : 'You are currently not subscribed to a plan.'}
-        </div>
-        <SubscriptionButton isPro={isPro} />
+        <UserNameForm user={{ id: user.id, name: user.name || '' }} />
       </div>
     </DashboardShell>
   )
