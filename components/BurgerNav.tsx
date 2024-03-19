@@ -31,30 +31,28 @@ const BurgerNav = () => {
   }
 
   return (
-    <div className='absolute top-0 w-full h-[100px] z-[10]'>
-      <div className='flex justify-between items-center w-full h-full px-[20px] lg:px-[60px] font-semibold font-syncopate'>
-        <div className='text-center w-full relative h-24'>
-          <Link href='/'>
-            <div className='fixed h-14 w-14 z-20 flex flex-col cursor-pointer top-6 left-6 shadow-2xl rounded-full border-2 border-[#69696941] sm:border-none'>
-              <Logo />
+    <div className='fixed top-0 left-0 w-full h-[100px] z-[10] md:hidden flex items-center justify-between border-4 px-6'>
+      <div className=''>
+        <Link href='/'>
+          <div className='h-14 w-14 z-20 flex flex-col cursor-pointer top-6 left-6 shadow-2xl rounded-full border-2 border-[#69696941] sm:border-none'>
+            <Logo />
 
-              <h3 className='font-light text-[10px] tracking-widest text-center mt-1 w-full uppercase sm:text-white font-syncopate'>
-                L&apos;ouvair
-              </h3>
-            </div>
-          </Link>
-        </div>
+            <h3 className='text-[10px] tracking-widest text-center mt-1 w-full uppercase sm:text-neutral-300 font-syncopate'>
+              L&apos;ouvair
+            </h3>
+          </div>
+        </Link>
+      </div>
 
-        <div
-          onClick={handleNav}
-          className='flex gap-3 text-black red-hover w-32'
-        >
-          <span className='font-syncopate'>MENU</span>
-          <AiOutlineMenu
-            size={25}
-            className=''
-          />
-        </div>
+      <div
+        onClick={handleNav}
+        className='flex gap-3 text-black red-hover w-32'
+      >
+        <span className='font-syncopate'>MENU</span>
+        <AiOutlineMenu
+          size={25}
+          className=''
+        />
       </div>
       <div
         className={`${

@@ -1,7 +1,7 @@
 'use client'
 
 import { useEffect, useState } from 'react'
-import Home from '@/app/(home)/home/page'
+import Home from '@/components/template/home'
 import Lenis from '@studio-freight/lenis'
 import LoadingScreen from '@/components/loading-screen'
 

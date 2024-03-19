@@ -2,7 +2,6 @@
 
 import * as React from 'react'
 
-import { Event } from '@/lib/events'
 import { cn } from '@/lib/utils'
 import { Button } from '@/components/ui/button'
 import { CheckIcon, CopyIcon } from 'lucide-react'
@@ -10,10 +9,9 @@ import { CheckIcon, CopyIcon } from 'lucide-react'
 interface CopyButtonProps extends React.HTMLAttributes<HTMLButtonElement> {
   value: string
   src?: string
-  event?: Event['name']
 }
 
-export function CopyButton({ value, className, src, event, ...props }: CopyButtonProps) {
+export function CopyButton({ value, className, src, ...props }: CopyButtonProps) {
   const [hasCopied, setHasCopied] = React.useState(false)
 
   React.useEffect(() => {

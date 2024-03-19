@@ -1,7 +1,4 @@
 import Link from 'next/link'
-
-import { cn } from '@/lib/utils'
-import { buttonVariants } from '@/components/ui/button'
 import { UserAuthForm } from '@/components/user-auth-form'
 import { Logo } from '@/components/Logo'
 
@@ -15,10 +12,7 @@ export default function RegisterPage() {
     <div className='container grid h-screen w-screen flex-col items-center justify-center lg:max-w-none lg:grid-cols-2 lg:px-0'>
       <Link
         href='/login'
-        className={cn(
-          buttonVariants({ variant: 'ghost' }),
-          'absolute right-4 top-4 md:right-8 md:top-8'
-        )}
+        className='absolute right-4 top-4 md:right-8 md:top-8'
       >
         Login
       </Link>
@@ -48,7 +42,6 @@ export default function RegisterPage() {
             >
               Privacy Policy
             </Link>
-            .
           </p>
         </div>
       </div>

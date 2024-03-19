@@ -1,17 +1,11 @@
-import Link from 'next/link'
+'use client'
 
+import Link from 'next/link'
 import { cn } from '@/lib/utils'
 import { buttonVariants } from '@/components/ui/button'
 import { Check } from 'lucide-react'
-import { currentUser } from '@clerk/nextjs'
-
-export const metadata = {
-  title: 'Pricing'
-}
 
 export default function PricingPage() {
-  const user = currentUser()
-
   return (
     <section className='container flex flex-col md:max-w-[64rem] pt-24'>
       <div className='mx-auto flex w-full flex-col gap-4 md:max-w-[58rem]'>

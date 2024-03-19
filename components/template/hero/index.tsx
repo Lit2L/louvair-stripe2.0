@@ -92,6 +92,7 @@ const Hero: FC = () => {
             alt=' hero'
             ref={backgroundImage}
             className='hero-image'
+            priority
           />
         </div>
 

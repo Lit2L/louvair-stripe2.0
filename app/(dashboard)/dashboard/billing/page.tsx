@@ -53,8 +53,8 @@ export default async function BillingPage() {
           <FileWarning />
           <AlertTitle>This is a demo app.</AlertTitle>
           <AlertDescription>
-            Taxonomy app is a demo app using a Stripe test environment. You can find a list of test
-            card numbers on the{' '}
+            L&apos;ouvair app is a demo app using a Stripe test environment. You can find a list of
+            test card numbers on the{' '}
             <a
               href='https://stripe.com/docs/testing#cards'
               target='_blank'

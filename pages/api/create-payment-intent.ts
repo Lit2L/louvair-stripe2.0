@@ -1,15 +1,13 @@
 import { NextApiRequest, NextApiResponse } from 'next'
 
 import Stripe from 'stripe'
-
 import { db } from '@/lib/db'
-
 import { authOptions } from '@/pages/api/auth/[...nextauth]'
 import { getServerSession } from 'next-auth'
 import { AddCartType } from '@/types/AddCartType'
 
-const stripe = new Stripe(process.env.STRIPE_SECRET_KEY as string, {
-  apiVersion: '2023-10-16'
+const stripe = new Stripe(process.env.STRIPE_API_KEY as string, {
+  apiVersion: '2022-11-15'
 })
 
 const calcOrderAmount = (items: AddCartType[]) => {
@@ -99,6 +97,7 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
       return
     }
   } else {
+    // If payment_intent_id doesn't exist, create one
     const new_payment_intent = await stripe.paymentIntents.create({
       amount: calcOrderAmount(items),
       currency: 'usd',

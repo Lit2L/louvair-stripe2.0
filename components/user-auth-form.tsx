@@ -29,7 +29,7 @@ export function UserAuthForm({ className, ...props }: UserAuthFormProps) {
     resolver: zodResolver(userAuthSchema)
   })
   const [isLoading, setIsLoading] = React.useState<boolean>(false)
-  const [isGitHubLoading, setIsGitHubLoading] = React.useState<boolean>(false)
+  const [isGoogleLoading, setIsGoogleLoading] = React.useState<boolean>(false)
   const searchParams = useSearchParams()
 
   async function onSubmit(data: FormData) {
@@ -102,20 +102,16 @@ export function UserAuthForm({ className, ...props }: UserAuthFormProps) {
         </div>
       </div>
       <button
-        type='button'
-        className={cn(buttonVariants({ variant: 'outline' }))}
-        onClick={() => {
-          setIsGitHubLoading(true)
-          signIn('github')
-        }}
-        disabled={isLoading || isGitHubLoading}
+        className=''
+        onClick={() => signIn()}
+        disabled={isLoading || isGoogleLoading}
       >
-        {isGitHubLoading ? (
+        {isGoogleLoading ? (
           <Disc3 className='mr-2 h-4 w-4 animate-spin' />
         ) : (
           <TbBrandGoogle className='mr-2 h-4 w-4' />
         )}{' '}
-        Github
+        Google
       </button>
     </div>
   )

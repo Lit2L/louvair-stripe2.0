@@ -8,5 +8,6 @@ export const Logo = ({ ...props }) => (
     height={100}
     width={100}
     {...props}
+    className='h-12 w-12'
   />
 )

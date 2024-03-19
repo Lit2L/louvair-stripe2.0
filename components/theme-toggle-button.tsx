@@ -1,6 +1,6 @@
 'use client'
 
-import { useState, type ComponentPropsWithRef, type FC, useEffect } from 'react'
+import { type ComponentPropsWithRef, type FC } from 'react'
 
 import type { HTMLMotionProps } from 'framer-motion'
 import { AnimatePresence, motion } from 'framer-motion'
@@ -38,7 +38,10 @@ export const ThemeToggleButton: FC = () => {
           className='overflow-hidden text-gray-400 hover:text-gradient dark:text-gray-300 dark:hover:text-gray-200'
           onClick={toggleTheme}
         >
-          <MdOutlineLightMode title='Light mode' size={24} />
+          <MdOutlineLightMode
+            title='Light mode'
+            size={24}
+          />
         </IconButton>
       ) : (
         <IconButton
@@ -46,7 +49,10 @@ export const ThemeToggleButton: FC = () => {
           className='hover:text-primary-brand overflow-hidden text-dark-400 hover:text-dark-500 dark:text-dark-300 dark:hover:text-dark-200'
           onClick={toggleTheme}
         >
-          <MdOutlineDarkMode title='Dark mode' size={24} />
+          <MdOutlineDarkMode
+            title='Dark mode'
+            size={24}
+          />
         </IconButton>
       )}
     </AnimatePresence>

@@ -1,7 +1,6 @@
 import Link from 'next/link'
 import Louvair from '../public/assets/LogoWhite.png'
 import Image from 'next/image'
-import { ThemeToggleButton } from './theme-toggle-button'
 
 export default function Footer() {
   return (

@@ -1,32 +1,10 @@
-// This is your Prisma schema file,
-// learn more about it in the docs: https://pris.ly/d/prisma-schema
-
-generator client {
-  provider = "prisma-client-js"
-}
-
 datasource db {
   provider = "postgresql"
   url      = env("DATABASE_URL")
 }
 
-model User {
-  id          String    @id @default(cuid())
-  email       String    @unique
-  name        String?
-  image       String?
-  clerkUserId String?   @unique
-  clerkId     String    @unique
-  createdAt   DateTime  @default(now()) @map(name: "created_at")
-  updatedAt   DateTime  @updatedAt @map(name: "updated_at")
-  accounts    Account[]
-  sessions    Session[]
-  orders      Order[]
-
-  stripeCustomerId       String?
-  stripeSubscriptionId   String?
-  stripePriceId          String?
-  stripeCurrentPeriodEnd DateTime?
+generator client {
+  provider = "prisma-client-js"
 }
 
 model Account {
@@ -46,6 +24,24 @@ model Account {
   user User @relation(fields: [userId], references: [id], onDelete: Cascade)
 
   @@unique([provider, providerAccountId])
+}
+
+model User {
+  id            String    @id @default(cuid())
+  name          String?
+  email         String?   @unique
+  emailVerified DateTime?
+  image         String?
+  accounts      Account[]
+  sessions      Session[]
+  createdAt     DateTime  @default(now()) @map(name: "created_at")
+  updatedAt     DateTime  @updatedAt @map(name: "updated_at")
+  orders        Order[]
+
+  stripeCustomerId       String?
+  stripeSubscriptionId   String?
+  stripePriceId          String?
+  stripeCurrentPeriodEnd DateTime?
 }
 
 model Session {
@@ -77,9 +73,6 @@ model Product {
 
 model Order {
   id              String    @id @default(cuid())
-  // 👇🏻 Many-to-one relationship
-  // Defines a many-to-one relationship with the User model. The `userId` field
-  // in this model `Order` holds a foreign key for the `User`.
   user            User      @relation(fields: [userId], references: [id])
   userId          String
   amount          Float
