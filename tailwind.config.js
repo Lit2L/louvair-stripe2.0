@@ -59,7 +59,8 @@ module.exports = {
         sm: 'calc(var(--radius) - 4px)'
       },
       fontFamily: {
-        syncopate: ['Syncopate', 'sans-serif']
+        syncopate: ['Syncopate', 'sans-serif'],
+        montserrat: ['Montserrat', 'sans-serif']
       },
       keyframes: {
         'accordion-down': {

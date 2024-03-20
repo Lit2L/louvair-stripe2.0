@@ -31,8 +31,8 @@ const BurgerNav = () => {
   }
 
   return (
-    <div className='fixed top-0 left-0 w-full h-[100px] z-[10] md:hidden flex items-center justify-between border-4 px-6'>
-      <div className=''>
+    <div className='fixed top-0 left-0 w-full h-[100px] z-[10] md:hidden flex items-center justify-end border-4 px-6'>
+      {/* <div className=''>
         <Link href='/'>
           <div className='h-14 w-14 z-20 flex flex-col cursor-pointer top-6 left-6 shadow-2xl rounded-full border-2 border-[#69696941] sm:border-none'>
             <Logo />
@@ -42,7 +42,7 @@ const BurgerNav = () => {
             </h3>
           </div>
         </Link>
-      </div>
+      </div> */}
 
       <div
         onClick={handleNav}

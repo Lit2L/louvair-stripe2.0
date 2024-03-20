@@ -7,14 +7,14 @@ import { signIn } from 'next-auth/react'
 import { useForm } from 'react-hook-form'
 import * as z from 'zod'
 
+import { FcGoogle } from 'react-icons/fc'
 import { cn } from '@/lib/utils'
 import { userAuthSchema } from '@/lib/validations/auth'
-import { buttonVariants } from '@/components/ui/button'
+import { Button, buttonVariants } from '@/components/ui/button'
 import { Input } from '@/components/ui/input'
 import { Label } from '@/components/ui/label'
 import { toast } from '@/components/ui/use-toast'
 import { Disc3 } from 'lucide-react'
-import { TbBrandGoogle } from 'react-icons/tb'
 
 interface UserAuthFormProps extends React.HTMLAttributes<HTMLDivElement> {}
 
@@ -84,13 +84,13 @@ export function UserAuthForm({ className, ...props }: UserAuthFormProps) {
             />
             {/* {errors?.email && <p className='px-1 text-xs text-red-600'>{errors.email.message}</p>} */}
           </div>
-          <button
+          <Button
             className={cn(buttonVariants())}
-            disabled={isLoading}
+            disabled={true}
           >
             {isLoading && <Disc3 className='mr-2 h-4 w-4 animate-spin' />}
             Sign In with Email
-          </button>
+          </Button>
         </div>
       </form>
       <div className='relative'>
@@ -101,18 +101,22 @@ export function UserAuthForm({ className, ...props }: UserAuthFormProps) {
           <span className='bg-background px-2 text-muted-foreground'>Or continue with</span>
         </div>
       </div>
-      <button
-        className=''
-        onClick={() => signIn()}
+      <Button
+        type='button'
+        className='border-4 border-black flex items-center justify-center gap-3'
+        onClick={() => {
+          setIsGoogleLoading(true)
+          signIn('google')
+        }}
         disabled={isLoading || isGoogleLoading}
       >
         {isGoogleLoading ? (
-          <Disc3 className='mr-2 h-4 w-4 animate-spin' />
+          <Disc3 className='mr-2 h-5 w-5 animate-spin' />
         ) : (
-          <TbBrandGoogle className='mr-2 h-4 w-4' />
+          <FcGoogle className='mr-2 h-5 w-5' />
         )}{' '}
         Google
-      </button>
+      </Button>
     </div>
   )
 }

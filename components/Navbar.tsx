@@ -1,21 +1,19 @@
 'use client'
 
-import { signIn, signOut, useSession } from 'next-auth/react'
+import { Session, getServerSession } from 'next-auth'
+import { signIn, signOut } from 'next-auth/react'
 import Image from 'next/image'
 import Link from 'next/link'
 // import Cart from './Cart';
 // import { useCartStore } from '@/zustand/store';
 import { FiShoppingCart } from 'react-icons/fi'
-
-import { AnimatePresence, motion } from 'framer-motion'
+// import { AnimatePresence, motion } from 'framer-motion'
 import { ThemeToggleButton } from './theme-toggle-button'
 import { Logo } from './Logo'
-import { Session } from 'next-auth'
 import { UserAccountNav } from './user-account-nav'
 import { authOptions } from '@/pages/api/auth/[...nextauth]'
 
 export default function Navbar({ user }: Session) {
-  // const session = await getServerSession(authOptions)
   // const cartStore = useCartStore()
   const handleBlurOut = () => {
     if (document.activeElement instanceof HTMLElement) {

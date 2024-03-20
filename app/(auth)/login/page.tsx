@@ -2,7 +2,7 @@ import { Metadata } from 'next'
 import Link from 'next/link'
 import { UserAuthForm } from '@/components/user-auth-form'
 import { ChevronLeft } from 'lucide-react'
-import { Logo } from '@/components/Logo'
+import { LogoBrand } from '@/components/LogoBrand'
 
 export const metadata: Metadata = {
   title: 'Login',
@@ -11,7 +11,7 @@ export const metadata: Metadata = {
 
 export default function LoginPage() {
   return (
-    <div className='container flex h-screen w-screen flex-col items-center justify-center'>
+    <div className='container  flex h-screen w-screen  flex-col items-center justify-center'>
       <Link
         href='/'
         className='absolute left-4 top-4 md:left-8 md:top-8'
@@ -22,9 +22,11 @@ export default function LoginPage() {
         </>
       </Link>
       <div className='mx-auto flex w-full flex-col justify-center space-y-6 sm:w-[350px]'>
-        <div className='flex flex-col space-y-2 text-center'>
-          <Logo className='mx-auto h-6 w-6' />
-          <h1 className='text-2xl font-semibold tracking-tight'>Welcome back</h1>
+        <div className='flex flex-col items-center  justify-center gap-3 space-y-2 text-center'>
+          <div className='rounded-full'>
+            <LogoBrand className='mx-auto h-6 w-6 ' />
+          </div>
+          <h1 className='text-2xl font-manrope font-semibold tracking-tight'>Welcome back</h1>
           <p className='text-sm text-muted-foreground'>
             Enter your email to sign in to your account
           </p>

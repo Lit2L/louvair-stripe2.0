@@ -1,10 +1,10 @@
-import { DashboardConfig } from 'types'
+import { DashboardConfig } from '@/types/index'
 
 export const dashboardConfig: DashboardConfig = {
   mainNav: [
     {
-      title: 'Store',
-      href: '/store'
+      title: 'Products',
+      href: '/products'
     },
     {
       title: 'Pricing',
