@@ -3,8 +3,7 @@ import Image from 'next/image'
 import Link from 'next/link'
 
 import { ProductType } from '@/types/ProductType'
-
-import priceFormat from '@/utils/priceFormat'
+import priceFormat from '@/lib/priceFormat'
 
 export default function Product({
   id,

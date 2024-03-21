@@ -34,13 +34,15 @@ export default async function ProductsPage() {
   const products = await getProducts()
   console.log('products: ', products)
   return (
-    <main className='grid gap-8'>
-      {products.map((product) => (
-        <Product
-          {...product}
-          key={product.id}
-        />
-      ))}
+    <main className=''>
+      <section className='w-full grid grid-cols-3'>
+        {products.map((product) => (
+          <Product
+            {...product}
+            key={product.id}
+          />
+        ))}
+      </section>
     </main>
   )
 }
