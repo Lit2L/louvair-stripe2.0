@@ -17,11 +17,8 @@ interface DashboardLayoutProps {
 export default async function DashboardLayout({ children }: DashboardLayoutProps) {
   const user = await getCurrentUser()
 
-  if (!user) {
-    redirect('/login')
-  }
   // if (!user) {
-  // 	return notFound()
+  //   redirect('/login')
   // }
 
   return (
@@ -29,13 +26,15 @@ export default async function DashboardLayout({ children }: DashboardLayoutProps
       <header className='sticky top-0 z-40'>
         <div className='container flex h-16 items-center justify-between py-4'>
           <MainNav items={dashboardConfig.mainNav} />
-          <UserAccountNav
-            user={{
-              name: user.name,
-              image: user.image,
-              email: user.email
-            }}
-          />
+          {user && (
+            <UserAccountNav
+              user={{
+                name: user.name,
+                image: user.image,
+                email: user.email
+              }}
+            />
+          )}
         </div>
       </header>
       <div className='container grid flex-1 gap-12 mt-16 md:grid-cols-[150px_1fr]'>

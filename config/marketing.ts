@@ -15,8 +15,8 @@ export const marketingConfig: MarketingConfig = {
       href: '/products'
     },
     {
-      title: 'About',
-      href: '/'
+      title: 'Dashboard',
+      href: '/dashboard'
     }
   ]
 }

@@ -5,7 +5,7 @@ import { BillingForm } from '@/components/billing-form'
 import { authOptions } from '@/pages/api/auth/[...nextauth]'
 import { getCurrentUser } from '@/lib/session'
 import { getUserSubscriptionPlan } from '@/lib/subscription'
-import { DashboardHeader } from '@/components/dashboard/header'
+import { DashboardHeader } from '@/components/header'
 import { DashboardShell } from '@/components/dashboard/shell'
 
 import { CopyButton } from '@/components/copy-button'

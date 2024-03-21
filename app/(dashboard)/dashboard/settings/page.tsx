@@ -2,7 +2,7 @@ import { redirect } from 'next/navigation'
 
 import { authOptions } from '@/pages/api/auth/[...nextauth]'
 import { getCurrentUser } from '@/lib/session'
-import { DashboardHeader } from '@/components/dashboard/header'
+import { DashboardHeader } from '@/components/header'
 import { DashboardShell } from '@/components/shell'
 import { UserNameForm } from '@/components/user-name-form'
 

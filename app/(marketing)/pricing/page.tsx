@@ -47,7 +47,7 @@ export default function PricingPage() {
 
           <div className=''>
             <Link
-              href='https://buy.stripe.com/test_4gweYf8I4dyo1DqaEH'
+              href='/dashboard/billing'
               className={cn(buttonVariants({ size: 'lg' }))}
             >
               Get Started

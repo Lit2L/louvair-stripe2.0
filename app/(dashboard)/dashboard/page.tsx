@@ -1,4 +1,4 @@
-import { DashboardHeader } from '@/components/dashboard/header'
+import { DashboardHeader } from '@/components/header'
 import { getServerSession } from 'next-auth'
 import { authOptions } from '@/pages/api/auth/[...nextauth]'
 import priceFormat from '@/lib/priceFormat'
@@ -38,12 +38,15 @@ export default async function DashboardPage() {
   console.log('<Dashboard> :', orders)
   if (orders === null) {
     return (
-      <div className=''>
-        <h1 className='font-vietnam text-2xl font-bold'>
-          Dashboard <span className='font-normal'>| Oops!</span>
-        </h1>
-        <h2 className='mt-1 text-base'>Signin to view your orders.</h2>
-      </div>
+      <>
+        <Separator />
+        <div className='mt-6'>
+          <h1 className='font-vietnam text-2xl font-bold'>
+            Dashboard <span className='font-normal'>| User not logged in</span>
+          </h1>
+          <h2 className='mt-3 text-base'>Login to view your orders.</h2>
+        </div>
+      </>
     )
   }
   if (orders.length === 0) {

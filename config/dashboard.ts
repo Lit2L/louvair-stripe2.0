@@ -9,6 +9,10 @@ export const dashboardConfig: DashboardConfig = {
     {
       title: 'Products',
       href: '/products'
+    },
+    {
+      title: 'Dashboard',
+      href: '/dashboard'
     }
   ],
   sidebarNav: [

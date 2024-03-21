@@ -1,5 +1,5 @@
 import { CardSkeleton } from '@/components/shared/card-skeleton'
-import { DashboardHeader } from '@/components/dashboard/header'
+import { DashboardHeader } from '@/components/header'
 import { DashboardShell } from '@/components/dashboard/shell'
 import { Button } from '@/components/ui/button'
 
