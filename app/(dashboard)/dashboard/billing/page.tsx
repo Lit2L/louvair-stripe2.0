@@ -48,7 +48,7 @@ export default async function BillingPage() {
         heading='Billing'
         text='Manage billing and your subscription plan.'
       />
-      <div className='grid gap-8'>
+      <div className='grid gap-8 font-vietnam '>
         <Alert className='!pl-14'>
           <FileWarning />
           <AlertTitle>This is a demo app.</AlertTitle>
@@ -63,7 +63,6 @@ export default async function BillingPage() {
             >
               Stripe docs
             </a>
-            .
           </AlertDescription>
         </Alert>
         <BillingForm

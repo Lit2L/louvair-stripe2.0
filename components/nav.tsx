@@ -5,7 +5,7 @@ import { usePathname } from 'next/navigation'
 
 import { SidebarNavItem } from 'types'
 import { cn } from '@/lib/utils'
-import { MdImportContacts } from 'react-icons/md'
+import { Icons } from '@/components/icons'
 
 interface DashboardNavProps {
   items: SidebarNavItem[]
@@ -19,9 +19,9 @@ export function DashboardNav({ items }: DashboardNavProps) {
   }
 
   return (
-    <nav className='grid items-start gap-2 z-20'>
+    <nav className='grid items-start gap-2 mt-6 border-x px-3   border-neutral-400'>
       {items.map((item, index) => {
-        const Icon = item.icon
+        const Icon = Icons[item.icon || 'arrowRight']
         return (
           item.href && (
             <Link
@@ -30,12 +30,12 @@ export function DashboardNav({ items }: DashboardNavProps) {
             >
               <span
                 className={cn(
-                  'group flex items-center rounded-md px-3 py-2 text-sm font-medium hover:bg-accent hover:text-accent-foreground',
-                  path === item.href ? 'bg-accent' : 'transparent',
+                  'group flex items-center rounded-md px-3 py-2 text-md hover:bg-accent hover:text-accent-foreground font-vietnam font-semibold tracking-wider text-neutral-300',
+                  path === item.href ? 'bg-accent text-black' : 'transparent',
                   item.disabled && 'cursor-not-allowed opacity-80'
                 )}
               >
-                <MdImportContacts className='mr-2 h-4 w-4' />
+                <Icon className='mr-2 h-4 w-4' />
                 <span>{item.title}</span>
               </span>
             </Link>

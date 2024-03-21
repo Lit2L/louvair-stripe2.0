@@ -15,6 +15,7 @@ import { Input } from '@/components/ui/input'
 import { Label } from '@/components/ui/label'
 import { toast } from '@/components/ui/use-toast'
 import { Disc3 } from 'lucide-react'
+import { useRouter } from 'next/router'
 
 interface UserAuthFormProps extends React.HTMLAttributes<HTMLDivElement> {}
 
@@ -31,6 +32,7 @@ export function UserAuthForm({ className, ...props }: UserAuthFormProps) {
   const [isLoading, setIsLoading] = React.useState<boolean>(false)
   const [isGoogleLoading, setIsGoogleLoading] = React.useState<boolean>(false)
   const searchParams = useSearchParams()
+  const router = useRouter()
 
   async function onSubmit(data: FormData) {
     setIsLoading(true)
@@ -55,6 +57,29 @@ export function UserAuthForm({ className, ...props }: UserAuthFormProps) {
       title: 'Check your email',
       description: 'We sent you a login link. Be sure to check your spam too.'
     })
+  }
+
+  const handleGoogleSignIn = async () => {
+    setIsGoogleLoading(true)
+    const callbackUrl = searchParams?.get('from') || '/dashboard'
+    const signInResult = await signIn('google', { redirect: false, callbackUrl })
+
+    setIsGoogleLoading(false)
+
+    if (signInResult?.ok) {
+      router.push(signInResult.url as string)
+      toast({
+        title: 'Success',
+        description: 'You are now signed in with Google.',
+        variant: 'default'
+      })
+    } else {
+      toast({
+        title: 'Something went wrong.',
+        description: 'Your sign in request failed. Please try again.',
+        variant: 'destructive'
+      })
+    }
   }
 
   return (
@@ -104,10 +129,7 @@ export function UserAuthForm({ className, ...props }: UserAuthFormProps) {
       <Button
         type='button'
         className='border-4 border-black flex items-center justify-center gap-3'
-        onClick={() => {
-          setIsGoogleLoading(true)
-          signIn('google')
-        }}
+        onClick={handleGoogleSignIn}
         disabled={isLoading || isGoogleLoading}
       >
         {isGoogleLoading ? (

@@ -4,7 +4,7 @@ import { SiteConfig } from 'types'
 const site_url = 'https://louvair.com'
 
 export const siteConfig: SiteConfig = {
-  name: 'Louvair',
+  name: "L'ouvair",
   description: 'Full Admin control over ecommerce platform.',
   url: site_url,
   ogImage: `${site_url}/og.jpg`,

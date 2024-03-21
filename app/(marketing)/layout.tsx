@@ -1,7 +1,9 @@
-import BurgerNav from '@/components/BurgerNav'
-import Navbar from '@/components/Navbar'
 import { MainNav } from '@/components/main-nav'
 import { SiteFooter } from '@/components/site-footer'
+import { buttonVariants } from '@/components/ui/button'
+import { marketingConfig } from '@/config/marketing'
+import { cn } from '@/utils/cn'
+import Link from 'next/link'
 
 interface MarketingLayoutProps {
   children: React.ReactNode
@@ -9,17 +11,21 @@ interface MarketingLayoutProps {
 
 export default async function MarketingLayout({ children }: MarketingLayoutProps) {
   return (
-    <div className='h-screen w-full relative'>
-      <header className='sticky top-0 z-40 border-b '>
-        <div className='container flex items-center justify-between  relative'>
-          {/* <MainNav /> */}
-          {/* <Navbar /> */}
-          <BurgerNav />
-        </div>
-      </header>
-      <main className='flex w-full flex-1 flex-col overflow-hidden'>{children}</main>
+    <div className='flex min-h-screen w-full flex-col'>
+      <div className='fixed flex h-20 items-center w-full py-6'>
+        <MainNav items={marketingConfig.mainNav} />
+        <nav className='flex pt-3 mt-3 mx-3 items-center justify-center h-20 '>
+          <Link
+            href='/login'
+            className={cn(buttonVariants({ variant: 'outline', size: 'sm' }), 'px-4 ')}
+          >
+            Login
+          </Link>
+        </nav>
+      </div>
 
-      <SiteFooter className='border-t' />
+      <main className='flex-1'>{children}</main>
+      <SiteFooter />
     </div>
   )
 }

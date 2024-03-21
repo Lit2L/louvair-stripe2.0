@@ -4,9 +4,9 @@ import React from 'react'
 import Link from 'next/link'
 import { TbBrandFacebookFilled } from 'react-icons/tb'
 import { AiOutlineClose, AiOutlineInstagram, AiOutlineMenu } from 'react-icons/ai'
-import { Logo } from '@/components/Logo'
 import { ThemeToggleButton } from './theme-toggle-button'
 import { motion } from 'framer-motion'
+import { LogoBrand } from './LogoBrand'
 
 const AnimatedLink = motion(Link)
 AnimatedLink.defaultProps = { className: 'red-hover nav-link' }
@@ -31,18 +31,16 @@ const BurgerNav = () => {
   }
 
   return (
-    <div className='fixed top-0 left-0 w-full h-[100px] z-[10]  flex items-center justify-end border-4 px-6'>
-      {/* <div className=''>
-        <Link href='/'>
-          <div className='h-14 w-14 z-20 flex flex-col cursor-pointer top-6 left-6 shadow-2xl rounded-full border-2 border-[#69696941] sm:border-none'>
-            <Logo />
+    <div className='fixed md:hidden top-0 left-0 w-full h-[100px] z-[10]  flex items-center justify-between border-4 px-6'>
+      <Link href='/'>
+        <div className='h-14 w-14 z-20 flex flex-col cursor-pointer top-6 left-6 shadow-2xl rounded-full border-2 border-[#69696941] sm:border-none'>
+          <LogoBrand />
 
-            <h3 className='text-[10px] tracking-widest text-center mt-1 w-full uppercase sm:text-neutral-300 font-syncopate'>
-              L&apos;ouvair
-            </h3>
-          </div>
-        </Link>
-      </div> */}
+          <h3 className='text-[10px] tracking-widest text-center mt-1 w-full uppercase sm:text-neutral-300 font-syncopate'>
+            L&apos;ouvair
+          </h3>
+        </div>
+      </Link>
 
       <div
         onClick={handleNav}
@@ -163,14 +161,14 @@ const BurgerNav = () => {
               </li>
             </Link>
             <div className='py-20 border-b h-16 w-full border-[#ba7339] text-center'>
-              <Link href='/sign-in'>
+              <Link href='/login'>
                 <li
                   onClick={() => setNav(false)}
                   className={`${
                     nav ? 'translate-x-0 opacity-100 red-hover' : 'translate-x-[600px] opacity-0'
                   } text-3xl tracking-wider font-medium hover:cursor-pointer duration-1000 ease-in-out delay-&lsqb;1.1s&rsqb`}
                 >
-                  Sign In
+                  Login
                 </li>
               </Link>
             </div>

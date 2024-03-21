@@ -7,11 +7,9 @@ import { Check } from 'lucide-react'
 
 export default function PricingPage() {
   return (
-    <section className='container flex flex-col md:max-w-[64rem] pt-24'>
+    <section className='container flex flex-col md:max-w-[64rem] pt-24 mt-20'>
       <div className='mx-auto flex w-full flex-col gap-4 md:max-w-[58rem]'>
-        <h2 className='font-heading text-3xl leading-[1.1] sm:text-3xl md:text-6xl'>
-          Simple, transparent pricing
-        </h2>
+        <h2 className='font-syncopate '>Simple, transparent pricing</h2>
         <p className='max-w-[85%] leading-normal text-muted-foreground sm:text-lg sm:leading-7'>
           Unlock all features including unlimited posts for your blog.
         </p>

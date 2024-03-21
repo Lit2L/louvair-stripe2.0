@@ -8,7 +8,7 @@ import { redirect } from 'next/navigation'
 import { getCurrentUser } from '@/lib/session'
 import { UserAccountNav } from '@/components/user-account-nav'
 import BurgerNav from '@/components/BurgerNav'
-import Navbar from '@/components/Navbar'
+import Footer from '@/components/Footer'
 
 interface DashboardLayoutProps {
   children?: React.ReactNode
@@ -20,26 +20,30 @@ export default async function DashboardLayout({ children }: DashboardLayoutProps
   if (!user) {
     redirect('/login')
   }
+  // if (!user) {
+  // 	return notFound()
+  // }
 
   return (
-    <div className='sticky top-0  flex min-h-screen flex-col space-y-2 font-montserrat tracking-wide leading-1  border-b bg-background border-neutral-800 z-0'>
-      <header className=''>
-        <div className='container relative flex h-16 items-center justify-evenly w-full px-4'>
-          <Navbar
-            user={user}
-            key={user?.id}
-            expires={user.id}
+    <div className='flex min-h-screen flex-col space-y-6 font-vietnam'>
+      <header className='sticky top-0 z-40'>
+        <div className='container flex h-16 items-center justify-between py-4'>
+          <MainNav items={dashboardConfig.mainNav} />
+          <UserAccountNav
+            user={{
+              name: user.name,
+              image: user.image,
+              email: user.email
+            }}
           />
-          <BurgerNav />
         </div>
       </header>
-      <div className='container grid flex-1 gap-12 md:grid-cols-[200px_1fr]'>
-        <aside className='hidden w-[200px] flex-col md:flex mt-6'>
+      <div className='container grid flex-1 gap-12 mt-16 md:grid-cols-[150px_1fr]'>
+        <aside className='hidden w-[180px] flex-col md:flex bg-neutral-600 font-thin text-neutral-600'>
           <DashboardNav items={dashboardConfig.sidebarNav} />
         </aside>
         <main className='flex w-full flex-1 flex-col overflow-hidden'>{children}</main>
       </div>
-      <SiteFooter className='border-t' />
     </div>
   )
 }

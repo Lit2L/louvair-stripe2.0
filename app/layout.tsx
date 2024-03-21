@@ -1,6 +1,6 @@
 import '../styles/globals.css'
 import '../styles/shared.css'
-import { Montserrat, Syncopate } from 'next/font/google'
+import { Be_Vietnam_Pro, Syncopate } from 'next/font/google'
 import Hydrate from '@/components/hydrate'
 import { getServerSession } from 'next-auth/next'
 import { authOptions } from '@/pages/api/auth/[...nextauth]'
@@ -11,10 +11,10 @@ const syncopate = Syncopate({
   variable: '--font-syncopate'
 })
 
-const montserrat = Montserrat({
-  weight: ['200', '400', '600', '800'],
+const vietnam = Be_Vietnam_Pro({
+  weight: ['100', '200', '300', '400', '500', '600', '700', '800', '900'],
   subsets: ['latin'],
-  variable: '--font-montserrat'
+  variable: '--font-vietnam'
 })
 
 interface RootLayoutProps {
@@ -27,7 +27,7 @@ export default async function RootLayout({ children }: RootLayoutProps) {
   return (
     <html
       lang='en'
-      className={`${syncopate.className} ${montserrat.className}`}
+      className={`${syncopate.className} ${vietnam.variable}`}
     >
       <Hydrate>
         <main className=''>{children}</main>

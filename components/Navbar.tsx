@@ -1,20 +1,28 @@
 'use client'
 
-import { Session, getServerSession } from 'next-auth'
-import { signIn, signOut } from 'next-auth/react'
-import Image from 'next/image'
 import Link from 'next/link'
-// import Cart from './Cart';
-// import { useCartStore } from '@/zustand/store';
-import { FiShoppingCart } from 'react-icons/fi'
-// import { AnimatePresence, motion } from 'framer-motion'
-import { ThemeToggleButton } from './theme-toggle-button'
-import { Logo } from './Logo'
-import { UserAccountNav } from './user-account-nav'
-import { authOptions } from '@/pages/api/auth/[...nextauth]'
+import Cart from './Cart'
+import { MainNavItem } from '@/types'
+import { useCartStore } from '../zustand/store'
+import { AnimatePresence, motion } from 'framer-motion'
+import { ThemeToggleButton } from '@/components/theme-toggle-button'
+import { AiFillShopping } from 'react-icons/ai'
+import { Logo } from '@/components/Logo'
 
-export default function Navbar({ user }: Session) {
-  // const cartStore = useCartStore()
+import { useSelectedLayoutSegment } from 'next/navigation'
+
+import { UserAccountNav } from './user-account-nav'
+import { cn } from '@/lib/utils'
+
+interface MainNavProps {
+  items?: MainNavItem[]
+  children?: React.ReactNode
+}
+
+export default function Navbar({ children, items }: MainNavProps) {
+  const segment = useSelectedLayoutSegment()
+  const cartStore = useCartStore()
+
   const handleBlurOut = () => {
     if (document.activeElement instanceof HTMLElement) {
       document.activeElement.blur()
@@ -22,75 +30,75 @@ export default function Navbar({ user }: Session) {
   }
 
   return (
-    <nav className='md:flex items-center justify-between px-4 py-6 fixed w-full top-0 left-0 z-10 hidden '>
-      <Link
-        href={'/'}
-        className='flex flex-col items-center justify-center'
-      >
-        <Logo className='h-12 w-12' />
-        <span className='text-xs font-syncopate text-neutral-300 pt-1 text-center'>
-          L&apos;ouvair
-        </span>
+    <header className='flex gap-6 md:gap-10 w-full justify-between'>
+      <Link href='/'>
+        <Logo />
       </Link>
 
-      <ul className='flex items-center justify-center gap-8'>
-        <li
+      {items?.length ? (
+        <nav className='hidden gap-6 md:flex'>
+          {items?.map((item, index) => (
+            <Link
+              key={index}
+              href={item.disabled ? '#' : item.href}
+              className={cn(
+                'flex items-center text-md font-thin transition-colors hover:text-foreground/80 sm:text-xs',
+                item.href.startsWith(`/${segment}`) ? 'text-foreground' : 'text-foreground/60',
+                item.disabled && 'cursor-not-allowed opacity-80'
+              )}
+            >
+              {item.title}
+            </Link>
+          ))}
+        </nav>
+      ) : null}
+
+      {/* Dashboard */}
+      <div className='flex items-center space-x-6 md:space-x-10'>
+        {/* > If the user is signed in: */}
+        <button
           className='relative text-3xl cursor-pointer'
-          // onClick={() => cartStore.toggleCart()}
+          onClick={() => cartStore.toggleCart()}
         >
-          <FiShoppingCart />
-          {/* <AnimatePresence> */}
-          {/* Required condition when a component is removed from React tree */}
-          {/* {cartStore.cart.length > 0 && (
+          <AiFillShopping />
+          <AnimatePresence>
+            {/* Required condition when a component is removed from React tree */}
+            {cartStore.cart.length > 0 && (
               <motion.span
                 animate={{ scale: 1 }}
                 initial={{ scale: 0 }}
                 exit={{ scale: 0 }}
-                className='absolute flex items-center justify-center w-4 h-4 text-xs font-bold text-white rounded-full shadow-md bg-primary left-4 bottom-4'
+                className='absolute flex items-center justify-center w-4 h-4 text-xs font-thin text-white rounded-full shadow-md bg-primary left-4 bottom-4'
               >
                 {cartStore.cart.length}
               </motion.span>
-            )} */}
-          {/* </AnimatePresence> */}
-        </li>
+            )}
+          </AnimatePresence>
+        </button>
         {/* > If the user is not signed in: */}
-        {!user && (
-          <li className='px-2 py-1 text-sm text-white rounded-md bg-primary'>
-            <button onClick={() => signIn()}>Sign in</button>
-          </li>
-        )}
+
         <ThemeToggleButton />
-        {user && (
-          <div className='cursor-pointer dropdown dropdown-end avatar'>
-            <UserAccountNav user={user} />
-            <ul
-              tabIndex={0}
-              className='w-48 p-4 space-y-4 text-sm shadow-lg dropdown-content menu bg-base-200 rounded-box'
-            >
-              <Link
-                className='p-4 rounded-md hover:bg-base-100'
-                href={'/dashboard'}
-                onClick={handleBlurOut}
-              >
-                My Orders
-              </Link>
-              <li
-                className='p-4 rounded-md hover:bg-base-100'
-                onClick={() => {
-                  handleBlurOut()
-                  signOut()
-                }}
-              >
-                Sign out
-              </li>
-            </ul>
-          </div>
-        )}
-      </ul>
-      {/* <AnimatePresence> */}
-      {/* Required condition when a component is removed from React tree */}
-      {/* {cartStore.isOpen && <Cart />} */}
-      {/* </AnimatePresence> */}
-    </nav>
+
+        <Link
+          className='p-4 rounded-md text-sm font-thin hover:bg-black'
+          href={'/dashboard'}
+          onClick={handleBlurOut}
+        >
+          Orders
+        </Link>
+
+        <AnimatePresence>
+          {/* Required condition when a component is removed from React tree */}
+          {cartStore.isOpen && <Cart />}
+        </AnimatePresence>
+      </div>
+
+      <Link
+        href={'/login'}
+        className='hidden md:flex'
+      >
+        Login
+      </Link>
+    </header>
   )
 }

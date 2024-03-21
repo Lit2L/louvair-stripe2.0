@@ -7,7 +7,7 @@ import Image from 'next/image'
 import { CgClose } from 'react-icons/cg'
 import { TbSquareRoundedPlus, TbSquareRoundedMinus } from 'react-icons/tb'
 
-import emptyBasket from '@/public/shopping-cart-empty.png'
+import emptyBasket from '../public/shoppingbag.png'
 
 // FRAMER: USING THE LAYOUT PROP ⭐️
 // Setting `layout` prop to `true` enables an element to automatically animate to
@@ -142,7 +142,7 @@ export default function Cart() {
               priority
               className='object-cover'
             />
-            <h2 className='text-lg font-semibold'>Ohh no its empty :(</h2>
+            <h2 className='text-lg font-semibold'>Cart is empty :(</h2>
           </motion.div>
         )}
       </motion.section>

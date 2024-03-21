@@ -60,7 +60,7 @@ module.exports = {
       },
       fontFamily: {
         syncopate: ['Syncopate', 'sans-serif'],
-        montserrat: ['Montserrat', 'sans-serif']
+        vietnam: ['vietnam', 'sans-serif']
       },
       keyframes: {
         'accordion-down': {
