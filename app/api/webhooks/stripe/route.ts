@@ -1,6 +1,7 @@
 import { headers } from 'next/headers'
 import Stripe from 'stripe'
 
+// import { env } from '../env.mjs'
 import { db } from '@/lib/db'
 import { stripe } from '@/lib/stripe'
 
@@ -11,9 +12,13 @@ export async function POST(req: Request) {
   let event: Stripe.Event
 
   try {
-    event = stripe.webhooks.constructEvent(body, signature, process.env.STRIPE_WEBHOOK_SECRET!)
+    event = stripe.webhooks.constructEvent(
+      body,
+      signature,
+      process.env.STRIPE_WEBHOOK_SECRET as string
+    )
   } catch (error) {
-    return new Response(`Webhook Error:`, { status: 400 })
+    return new Response(`Webhook Error: ${error}`)
   }
 
   const session = event.data.object as Stripe.Checkout.Session
