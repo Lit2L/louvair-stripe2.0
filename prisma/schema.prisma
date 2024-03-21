@@ -38,8 +38,8 @@ model User {
   updatedAt     DateTime  @updatedAt @map(name: "updated_at")
   orders        Order[]
 
-  stripeCustomerId       String?
-  stripeSubscriptionId   String?
+  stripeCustomerId       String?   @unique
+  stripeSubscriptionId   String?   @unique
   stripePriceId          String?
   stripeCurrentPeriodEnd DateTime?
 }

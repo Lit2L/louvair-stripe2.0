@@ -10,7 +10,7 @@ import OrderAnimation from './OrderAnimation'
 import { motion } from 'framer-motion'
 import { useThemeStore } from '../zustand/store'
 
-const promise = loadStripe(process.env.NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY!) // ✅
+const promise = loadStripe(process.env.STRIPE_PUBLISHABLE_KEY!) // ✅
 
 export default function Checkout() {
   const cartStore = useCartStore()
