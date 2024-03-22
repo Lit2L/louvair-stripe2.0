@@ -7,8 +7,7 @@ import { Logo } from './Logo'
 import { MainNavItem } from 'types'
 import { siteConfig } from '@/config/site'
 import { cn } from '@/lib/utils'
-import { MobileNav } from './mobile-nav'
-import { AiFillCloseCircle } from 'react-icons/ai'
+
 import Cart from './Cart'
 import { useCartStore } from '@/zustand/store'
 import { signIn, signOut } from 'next-auth/react'
@@ -16,6 +15,7 @@ import { FiShoppingCart } from 'react-icons/fi'
 import { AnimatePresence, motion } from 'framer-motion'
 import { ThemeToggleButton } from './theme-toggle-button'
 import { Button } from './ui/button'
+import Image from 'next/image'
 interface MainNavProps {
   children?: React.ReactNode
   items?: MainNavItem[]
@@ -69,12 +69,71 @@ export function MainNav({ children, items, user }: MainNavProps) {
       </div>
 
       <div className='flex items-center justify-start '>
-        <Button
-          className='font-syncopate px-6 relative text-sm tracking-wider cursor-pointer'
-          onClick={() => signIn()}
-        >
-          Login
-        </Button>
+        <ul className='flex items-center justify-center gap-8'>
+          <li
+            className='relative text-3xl cursor-pointer'
+            onClick={() => cartStore.toggleCart()}
+          >
+            <FiShoppingCart />
+            <AnimatePresence>
+              {/* Required condition when a component is removed from React tree */}
+              {cartStore.cart.length > 0 && (
+                <motion.span
+                  animate={{ scale: 1 }}
+                  initial={{ scale: 0 }}
+                  exit={{ scale: 0 }}
+                  className='absolute flex items-center justify-center w-4 h-4 text-xs font-bold text-white rounded-full shadow-md bg-primary left-4 bottom-4'
+                >
+                  {cartStore.cart.length}
+                </motion.span>
+              )}
+            </AnimatePresence>
+          </li>
+          {/* > If the user is not signed in: */}
+          {!user && (
+            <li className='px-2 py-1 text-sm text-white rounded-md bg-primary'>
+              <button onClick={() => signIn()}>Sign in</button>
+            </li>
+          )}
+        </ul>
+
+        <ThemeToggleButton />
+        {user && (
+          <div className='cursor-pointer dropdown dropdown-end avatar'>
+            {/* <Image
+              src={user?.image as string}
+              alt={user?.name as string}
+              width={38}
+              height={38}
+              className="object-cover rounded-full shadow cursor-pointer bg-base-100"
+              priority
+              tabIndex={0}
+            /> */}
+            <ul
+              tabIndex={0}
+              className='w-48 p-4 space-y-4 text-sm shadow-lg  bg-base-200 rounded-box'
+            >
+              <li>
+                <Link
+                  className='p-4 rounded-md hover:bg-base-100'
+                  href={'/dashboard'}
+                  onClick={handleBlurOut}
+                >
+                  My Orders
+                </Link>
+              </li>
+              <li>
+                <Button
+                  className='font-syncopate px-6 relative text-sm tracking-wider cursor-pointer'
+                  onClick={() => signIn()}
+                >
+                  Login
+                </Button>
+              </li>
+            </ul>
+          </div>
+        )}
+
         {/* <button
           className='flex items-center space-x-2 md:hidden'
           onClick={() => setShowMobileMenu(!showMobileMenu)}

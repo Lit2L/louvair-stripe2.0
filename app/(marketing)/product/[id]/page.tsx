@@ -15,7 +15,7 @@ import { Label } from '@/components/ui/label'
 export default async function ProductPage({ searchParams }: SearchParamTypes) {
   console.log('searchParams: ', searchParams)
   return (
-    <div className='w-full flex flex-col items-center  justify-center'>
+    <div className='w-full flex flex-col h-screen items-center justify-center'>
       <div className='flex justify-center items-center md:flex-row max-w-4xl'>
         <Card className='shadow-2xl'>
           <CardHeader>
@@ -27,18 +27,19 @@ export default async function ProductPage({ searchParams }: SearchParamTypes) {
               alt={searchParams.name}
               width={600}
               height={600}
-              className='object-cover w-full h-96 rounded-lg md:h-[500px]'
+              className='object-cover w-full rounded-lg '
               priority={true}
             />
           </CardContent>
-          <CardDescription>
-            <p className='py-2'>{searchParams.features}</p>
-          </CardDescription>
 
-          <AddCartBtn {...searchParams} />
-          <Label className='px-2 py-2 text-sm rounded w-fit bg-base-200'>
-            {searchParams.unit_amount && priceFormat(searchParams.unit_amount)}
-          </Label>
+          <div className='flex justify-center h-min border'>
+            <Label className='text-xl bg-base-200  rounded'>
+              {searchParams.unit_amount && priceFormat(searchParams.unit_amount)}
+            </Label>
+          </div>
+          <div className='h-min mb-12 flex justify-center items-center flex-col'>
+            <AddCartBtn {...searchParams} />
+          </div>
         </Card>
       </div>
     </div>
