@@ -3,6 +3,7 @@
 import { AddCartType } from '@/types/AddCartType'
 import { useCartStore } from '@/zustand/store'
 import { useState } from 'react'
+import { Button } from './ui/button'
 
 export default function AddCartBtn({ id, name, image, unit_amount, quantity }: AddCartType) {
   const [added, setAdded] = useState(false)
@@ -17,14 +18,12 @@ export default function AddCartBtn({ id, name, image, unit_amount, quantity }: A
   }
 
   return (
-    <div className='pt-2 mt-auto'>
-      <button
-        onClick={handleAddToCart}
-        className='btn btn-primary'
-        disabled={added}
-      >
-        {!added ? <span>Add to cart </span> : <span>Adding to cart</span>}
-      </button>
-    </div>
+    <button
+      onClick={handleAddToCart}
+      className='px-6 py-2 backdrop-blur-md border bg-slate-700 border-gray-300/20 text-white mx-auto text-center rounded-full mt-24'
+      disabled={added}
+    >
+      {!added ? <span>Add to cart </span> : <span>Adding to cart</span>}
+    </button>
   )
 }

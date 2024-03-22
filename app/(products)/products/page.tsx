@@ -1,8 +1,6 @@
 import Stripe from 'stripe'
 import Product from '@/components/Product'
-import { CarouselPlugin } from '@/components/Carousel'
-import TestimonialSliderComponent from '@/components/testimonials/testimonial-slider-component'
-import { InfiniteCardSlider } from '@/components/testimonial-slider'
+import { HeroSlider } from '@/components/hero-slider'
 
 export async function getProducts() {
   const stripe = new Stripe(process.env.STRIPE_API_KEY as string, {
@@ -38,9 +36,10 @@ export default async function ProductsPage() {
   console.log('products: ', products)
   const productImages = products.map((images) => images.image)
   return (
-    <main className='w-full'>
-      <section className=''></section>
-      <section className='w-full grid grid-cols-3'>
+    <main className='w-full '>
+      <HeroSlider />
+
+      <section className='w-full grid grid-cols-3 mt-6 bg-[#f2f2f2]'>
         {products.map((product) => (
           <Product
             {...product}

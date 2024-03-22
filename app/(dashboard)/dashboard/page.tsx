@@ -41,7 +41,7 @@ export default async function DashboardPage() {
       <>
         <Separator />
         <div className='mt-6'>
-          <h1 className='font-vietnam text-2xl font-bold'>
+          <h1 className='font-sans text-2xl font-bold'>
             Dashboard <span className='font-normal'>| User not logged in</span>
           </h1>
           <h2 className='mt-3 text-base'>Login to view your orders.</h2>
@@ -53,7 +53,7 @@ export default async function DashboardPage() {
     return (
       <>
         <Separator />
-        <div className='font-vietnam mt-6'>
+        <div className='font-sans mt-6'>
           <h1 className='text-3xl font-bold'>
             Dashboard <span className='font-medium'>| user</span>
           </h1>
@@ -66,7 +66,7 @@ export default async function DashboardPage() {
   return (
     <>
       <Separator />
-      <div className='font-vietnam mt-6'>
+      <div className='font-sans mt-6'>
         <DashboardShell>
           <DashboardHeader
             heading='Dashboard'

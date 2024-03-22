@@ -64,7 +64,7 @@ module.exports = {
       },
       fontFamily: {
         syncopate: ['Syncopate', 'sans-serif'],
-        vietnam: ['vietnam', 'sans-serif']
+        sans: ['sans', 'sans-serif']
       },
       keyframes: {
         'accordion-down': {

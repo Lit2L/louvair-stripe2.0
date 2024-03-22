@@ -6,10 +6,12 @@ import { cn } from '@/lib/utils'
 import { ThemeToggleButton } from '@/components/theme-toggle-button'
 import Link from 'next/link'
 import { Logo } from './Logo'
+import { Separator } from './ui/separator'
 
 export function SiteFooter({ className }: React.HTMLAttributes<HTMLElement>) {
   return (
     <footer className={cn(className)}>
+      <Separator />
       <div className='container flex flex-col items-center font-sans justify-between gap-4 py-10 md:h-24 md:flex-row md:py-0'>
         <div className='flex flex-col items-center gap-4 px-8 md:flex-row md:gap-2 md:px-0'>
           <Logo />

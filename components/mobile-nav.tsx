@@ -36,7 +36,7 @@ export function MobileNav({ items, children }: MobileNavProps) {
               key={index}
               href={item.disabled ? '#' : item.href}
               className={cn(
-                'flex w-full items-center rounded-md p-2 text-lg font-light tracking-widest hover:underline font-vietnam ',
+                'flex w-full items-center rounded-md p-2 text-lg font-light tracking-widest hover:underline font-sans ',
                 item.disabled && 'cursor-not-allowed opacity-60'
               )}
             >

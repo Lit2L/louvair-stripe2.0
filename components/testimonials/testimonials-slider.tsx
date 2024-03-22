@@ -60,7 +60,7 @@ export default function TestimonialSlider({ testimonials }: TestimonialSliderPro
                         <p className='text-sm font-serif  font-semibold text-gray-900 dark:text-white'>
                           {testimonial.name}
                         </p>
-                        <p className='text-sm text-gray-500 font-vietnam dark:text-gray-400'>
+                        <p className='text-sm text-gray-500 font-sans dark:text-gray-400'>
                           {testimonial.role}
                         </p>
                       </div>

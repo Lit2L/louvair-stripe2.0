@@ -48,7 +48,7 @@ export default async function BillingPage() {
         heading='Billing'
         text='Manage billing and your subscription plan.'
       />
-      <div className='grid gap-8 font-vietnam '>
+      <div className='grid gap-8 font-sans '>
         <Alert className='!pl-14'>
           <FileWarning />
           <AlertTitle>This is a demo app.</AlertTitle>
