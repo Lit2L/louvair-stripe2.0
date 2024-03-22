@@ -95,53 +95,29 @@ export function MainNav({ children, items, user }: MainNavProps) {
               <button onClick={() => signIn()}>Sign in</button>
             </li>
           )}
-        </ul>
 
-        <ThemeToggleButton />
-        {user && (
-          <div className='cursor-pointer dropdown dropdown-end avatar'>
-            {/* <Image
-              src={user?.image as string}
-              alt={user?.name as string}
-              width={38}
-              height={38}
-              className="object-cover rounded-full shadow cursor-pointer bg-base-100"
-              priority
-              tabIndex={0}
-            /> */}
-            <ul
-              tabIndex={0}
-              className='w-48 p-4 space-y-4 text-sm shadow-lg  bg-base-200 rounded-box'
+          <li>
+            <ThemeToggleButton />
+          </li>
+
+          <li>
+            <Link
+              className='p-4 rounded-md hover:bg-base-100'
+              href={'/dashboard'}
+              onClick={handleBlurOut}
             >
-              <li>
-                <Link
-                  className='p-4 rounded-md hover:bg-base-100'
-                  href={'/dashboard'}
-                  onClick={handleBlurOut}
-                >
-                  My Orders
-                </Link>
-              </li>
-              <li>
-                <Button
-                  className='font-syncopate px-6 relative text-sm tracking-wider cursor-pointer'
-                  onClick={() => signIn()}
-                >
-                  Login
-                </Button>
-              </li>
-            </ul>
-          </div>
-        )}
-
-        {/* <button
-          className='flex items-center space-x-2 md:hidden'
-          onClick={() => setShowMobileMenu(!showMobileMenu)}
-        >
-          {showMobileMenu ? <AiFillCloseCircle /> : <Logo />}
-          <span className='font-bold'>Menu</span>
-        </button>
-        {showMobileMenu && items && <MobileNav items={items}>{children}</MobileNav>} */}
+              My Orders
+            </Link>
+          </li>
+          <li>
+            <Button
+              className='font-syncopate px-6 relative text-sm tracking-wider cursor-pointer'
+              onClick={() => signIn()}
+            >
+              Login
+            </Button>
+          </li>
+        </ul>
       </div>
     </div>
   )
