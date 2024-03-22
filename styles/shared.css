@@ -49,7 +49,7 @@ body {
 }
 
 /* Gradient in Hex */
-.theme-gradient {
+.hero-gradient {
   background: linear-gradient(
     to right,
     #b6b6c2 0%,
@@ -68,5 +68,59 @@ body {
     rgba(113, 75, 90, 1) 56.54135346412659%,
     78.2706767320633%,
     rgba(83, 81, 92, 1) 100%
+  );
+}
+
+.theme1 {
+  background: #cecdc9;
+}
+.theme2 {
+  background: #baaf9b;
+}
+.theme3 {
+  background: #ded7cd;
+}
+.theme4 {
+  background: #dbdad8;
+}
+.theme5 {
+  background: #bab7b0;
+}
+.theme6 {
+  background: #c4c4c2;
+}
+.theme7 {
+  background: #b7bbaa;
+}
+.theme8 {
+  background: #949782;
+}
+.theme9 {
+  background: #9c9076;
+}
+.theme10 {
+  background: #948e76;
+}
+.theme11 {
+  background: #72655f;
+}
+.theme12 {
+  background: #958866;
+}
+.theme13 {
+  background: #a2985d;
+}
+.theme14 {
+  background: #a6987b;
+}
+
+.theme-gradient {
+  background: linear-gradient(
+    to right,
+    #b6b6c2 0%,
+    28.270676732063293%,
+    #714b5a 56.54135346412659%,
+    78.2706767320633%,
+    #53515c 100%
   );
 }

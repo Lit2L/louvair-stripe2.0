@@ -2,6 +2,7 @@
 
 import { SessionProvider } from 'next-auth/react'
 import { ReactNode, useEffect, useState } from 'react'
+import { ThemeProvider } from './theme-provider'
 
 interface HydrateProps {
   children: ReactNode
@@ -16,7 +17,13 @@ export default function Hydrate({ children }: HydrateProps) {
 
   return (
     <SessionProvider>
-      {!isHydrated ? <body className=''></body> : <body className=''>{children}</body>}
+      {!isHydrated ? (
+        <body className=''></body>
+      ) : (
+        <body className=''>
+          <ThemeProvider>{children}</ThemeProvider>
+        </body>
+      )}
     </SessionProvider>
   )
 }

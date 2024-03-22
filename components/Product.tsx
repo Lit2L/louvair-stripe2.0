@@ -13,6 +13,7 @@ export default function Product({
   description,
   metadata: { features }
 }: ProductType) {
+  console.log({ id, name, image, unit_amount, description, features })
   // console.log({ id, name, image, unit_amount, features });
   return (
     <Link
@@ -28,7 +29,7 @@ export default function Product({
           alt={name}
           width={800}
           height={800}
-          className='object-cover w-full transition-transform duration-300 h-80 hover:scale-105'
+          className='object-contain w-full transition-transform duration-300 h-80 hover:scale-105'
           priority
         />
       </div>

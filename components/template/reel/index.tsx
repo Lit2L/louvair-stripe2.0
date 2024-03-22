@@ -72,7 +72,7 @@ const Reel: React.FC = () => {
           <p>Work in motion</p>
         </div>
         <div className='row center'>
-          <h2 ref={heading0}>Play</h2>
+          <h2 ref={heading0}>Work</h2>
           <video
             playsInline={true}
             loop={true}
@@ -86,12 +86,11 @@ const Reel: React.FC = () => {
               type='video/mp4'
             />
           </video>
-          <h2 ref={heading1}>Reel</h2>
+          <h2 ref={heading1}>Play</h2>
         </div>
         <p id='reel-bottom-p'>
-          Our work is best experienced in motion. Don&apos;t
+          Affect your surroundings
           <br />
-          forget to put on your headphones.
         </p>
       </div>
       {isPlaying ? (

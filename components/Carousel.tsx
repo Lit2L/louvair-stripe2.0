@@ -1,80 +1,53 @@
 'use client'
 
-import { cn } from '@/lib/utils'
+import * as React from 'react'
 import Autoplay from 'embla-carousel-autoplay'
-import useEmblaCarousel from 'embla-carousel-react'
+
+import { Card, CardContent } from '@/components/ui/card'
+import {
+  Carousel,
+  CarouselContent,
+  CarouselItem,
+  CarouselNext,
+  CarouselPrevious
+} from '@/components/ui/carousel'
 import Image from 'next/image'
-import { useEffect, useState } from 'react'
 
-export default function Carousel({ images }: { images: string[] }) {
-  const [emblaRef, emblaApi] = useEmblaCarousel({ loop: true }, [Autoplay()])
+type CarouselPluginProps = {
+  images: string[]
+}
 
-  const [selectedIndex, setSelectedIndex] = useState(0)
-
-  useEffect(() => {
-    function selectHandler() {
-      const index = emblaApi?.selectedScrollSnap()
-      setSelectedIndex(index || 0)
-    }
-
-    emblaApi?.on('select', selectHandler)
-
-    return () => {
-      emblaApi?.off('select', selectHandler)
-    }
-  }, [emblaApi])
+export function CarouselPlugin({ images }: CarouselPluginProps) {
+  const plugin = React.useRef(Autoplay({ delay: 2000, stopOnInteraction: true }))
 
   return (
-    <>
-      <div
-        className='overflow-hidden rounded-lg'
-        ref={emblaRef}
-      >
-        <div className='flex'>
-          {images.map((src, i) => (
-            <div
-              className='relative h-96 flex-[0_0_100%]'
-              key={i}
-            >
-              <Image
-                src={src}
-                fill
-                className='object-cover'
-                alt=''
-              />
+    <Carousel
+      plugins={[plugin.current]}
+      className='w-full max-w-xs'
+      onMouseEnter={plugin.current.stop}
+      onMouseLeave={plugin.current.reset}
+    >
+      <CarouselContent>
+        {images.map((image, index) => (
+          <CarouselItem key={index}>
+            <div className='p-1'>
+              <Card>
+                <CardContent className='flex flex-col aspect-square items-center justify-center p-6'>
+                  <Image
+                    src={image}
+                    alt={`Product ${index + 1}`}
+                    width={800}
+                    height={800}
+                  />
+                  <span className='text-4xl font-semibold'>{index + 1}</span>
+                </CardContent>
+              </Card>
             </div>
-          ))}
-        </div>
-      </div>
-      <Dots
-        itemsLength={images.length}
-        selectedIndex={selectedIndex}
-      />
-    </>
-  )
-}
-
-type Props = {
-  itemsLength: number
-  selectedIndex: number
-}
-const Dots = ({ itemsLength, selectedIndex }: Props) => {
-  const arr = new Array(itemsLength).fill(0)
-  return (
-    <div className='flex gap-1 justify-center -translate-y-8'>
-      {arr.map((_, index) => {
-        const selected = index === selectedIndex
-        return (
-          <div
-            className={cn({
-              'h-3 w-3 rounded-full transition-all duration-300 bg-primary-foreground': true,
-              // tune down the opacity if slide is not selected
-              'h-3 w-3 opacity-50': !selected
-            })}
-            key={index}
-          />
-        )
-      })}
-    </div>
+          </CarouselItem>
+        ))}
+      </CarouselContent>
+      <CarouselPrevious />
+      <CarouselNext />
+    </Carousel>
   )
 }

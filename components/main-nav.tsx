@@ -42,7 +42,7 @@ export function MainNav({ children, items }: MainNavProps) {
               href={item.href}
               passHref
               className={cn(
-                'flex items-center text-md font-vietnam transition-colors hover:text-foreground/80 sm:text-md tracking-wide',
+                'flex items-center text-md font-medium font-vietnam transition-colors hover:text-foreground/80 sm:text-md tracking-wide',
                 item.href.startsWith(`/${segment}`) ? 'text-foreground' : 'text-foreground/60',
                 item.disabled && 'cursor-not-allowed opacity-80'
               )}

@@ -5,6 +5,11 @@ import Hydrate from '@/components/hydrate'
 import { getServerSession } from 'next-auth/next'
 import { authOptions } from '@/pages/api/auth/[...nextauth]'
 import { siteConfig } from '@/config/site'
+import { MainNav } from '@/components/main-nav'
+import Link from 'next/link'
+import { cn } from '@/utils/cn'
+import { buttonVariants } from '@/components/ui/button'
+import { marketingConfig } from '@/config/marketing'
 
 const syncopate = Syncopate({
   weight: ['400', '700'],

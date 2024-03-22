@@ -1,3 +1,8 @@
+const defaultTheme = require('tailwindcss/defaultTheme')
+const colors = require('tailwindcss/colors')
+
+const { default: flattenColorPalette } = require('tailwindcss/lib/util/flattenColorPalette')
+
 /** @type {import('tailwindcss').Config} */
 module.exports = {
   content: [
@@ -18,7 +23,6 @@ module.exports = {
     },
     extend: {
       colors: {
-        themeblue: 'hsl(var(--themeblue))',
         border: 'hsl(var(--border))',
         input: 'hsl(var(--input))',
         ring: 'hsl(var(--ring))',
@@ -120,6 +124,11 @@ module.exports = {
           '100%': {
             opacity: 1
           }
+        },
+        scroll: {
+          to: {
+            transform: 'translate(calc(-50% - 0.5rem))'
+          }
         }
       },
       animation: {
@@ -132,9 +141,24 @@ module.exports = {
 
         // Fade in and out
         'fade-in': 'fade-in 0.4s',
-        'fade-out': 'fade-out 0.4s'
+        'fade-out': 'fade-out 0.4s',
+        scroll:
+          'scroll var(--animation-duration, 40s) var(--animation-direction, forwards) linear infinite'
       }
     }
   },
-  plugins: [require('tailwindcss-animate'), require('@tailwindcss/typography')]
+  plugins: [
+    require('tailwindcss-animate'),
+    require('@tailwindcss/typography'),
+    addVariablesForColors
+  ]
+}
+
+function addVariablesForColors({ addBase, theme }: any) {
+  let allColors = flattenColorPalette(theme('colors'))
+  let newVars = Object.fromEntries(Object.entries(allColors).map(([key, val]) => [`--${key}`, val]))
+
+  addBase({
+    ':root': newVars
+  })
 }

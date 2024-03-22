@@ -12,9 +12,9 @@ interface MarketingLayoutProps {
 export default async function MarketingLayout({ children }: MarketingLayoutProps) {
   return (
     <div className='flex min-h-screen w-full flex-col'>
-      <div className='fixed flex h-20 items-center w-full py-6'>
+      <div className='fixed top-0 flex h-20 items-center w-full justify-between py-4 z-40'>
         <MainNav items={marketingConfig.mainNav} />
-        <nav className='flex pt-3 mt-3 mx-3 items-center justify-center h-20 '>
+        <nav className='flex pt-3 mt-3 mx-3 items-center justify-center'>
           <Link
             href='/login'
             className={cn(buttonVariants({ variant: 'outline', size: 'sm' }), 'px-4 ')}

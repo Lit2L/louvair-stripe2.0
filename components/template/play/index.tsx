@@ -1,6 +1,6 @@
 'use client'
 
-import './Work.css'
+import './play.css'
 import { gsap } from 'gsap'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
 import Image from 'next/image'
@@ -8,7 +8,7 @@ import { useRef, useEffect } from 'react'
 
 gsap.registerPlugin(ScrollTrigger)
 
-const Work: React.FC = () => {
+const Play: React.FC = () => {
   const image1 = useRef<HTMLDivElement>(null)
   const image3 = useRef<HTMLDivElement>(null)
   const heading = useRef<HTMLHeadingElement>(null)
@@ -101,15 +101,15 @@ const Work: React.FC = () => {
 
   return (
     <section
-      className='column content-width overflow-auto'
+      className='column content-width overflow-auto max-w-full pt-24'
       id='work-section'
     >
-      <div className='anim justify-end flex w-full'>
+      <div className='overflow-hidden ml-12'>
         <h1
-          className='text-5xl font-bold'
+          className='text-5xl text-slate-600 font-bold my-12'
           ref={heading}
         >
-          Playtime
+          Be Playful
         </h1>
       </div>
       <div className='row'>
@@ -279,10 +279,13 @@ const Work: React.FC = () => {
               <span>Unique atmospheric&apos;s point of view</span>
             </p>
           </div>
+          <div className='row'>
+            <p className='text-black'> And Professional</p>
+          </div>
         </div>
       </div>
     </section>
   )
 }
 
-export default Work
+export default Play

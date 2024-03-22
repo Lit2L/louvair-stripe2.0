@@ -91,12 +91,12 @@ const Hero: FC = () => {
             src={HeroImage}
             alt=' hero'
             ref={backgroundImage}
-            className='hero-image'
+            className='hero-image '
             priority
           />
         </div>
 
-        <div className='content'>
+        <div className=''>
           <h1 className=''>
             <div className='w-full text-center'>
               <p
@@ -123,11 +123,11 @@ const Hero: FC = () => {
             </div>
           </h1>
         </div>
-        <div className='flex flex-col items-center w-full gap-10 h-full'>
+        <div className='flex flex-col items-center w-full gap-10 h-full relative z-20'>
           <Link
             href='/dashboard'
             className={cn(
-              'flex items-center w-72 justify-center ease-in-out transition-all duration-300 hover:text-red-400',
+              'flex items-center w-72 justify-center red-hover',
               buttonVariants({ variant: 'secondary', size: 'sm' })
             )}
           >
@@ -136,7 +136,7 @@ const Hero: FC = () => {
 
           <Link
             href='/products'
-            className={cn(buttonVariants({ variant: 'default', size: 'sm' }), 'w-64')}
+            className={cn(buttonVariants({ variant: 'default', size: 'sm' }), 'w-64 red-hover')}
           >
             Visit Store
           </Link>

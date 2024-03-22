@@ -1,15 +1,16 @@
-'use client'
-
 import Link from 'next/link'
 import { cn } from '@/lib/utils'
 import { buttonVariants } from '@/components/ui/button'
 import { Check } from 'lucide-react'
 
+export const metadata = {
+  title: 'Pricing'
+}
 export default function PricingPage() {
   return (
-    <section className='container flex flex-col md:max-w-[64rem] pt-24 mt-20'>
-      <div className='mx-auto flex w-full flex-col gap-4 md:max-w-[58rem]'>
-        <h2 className='font-syncopate '>Simple, transparent pricing</h2>
+    <section className='container flex flex-col md:max-w-[64rem] mt-44 bg-slate-500/30 rounded-md border p-6 shadow-gray-300 shadow-2xl'>
+      <div className='mx-auto flex w-full flex-col gap-4 md:max-w-[58rem] '>
+        <h2 className='font-vietnam '>Simple, transparent pricing</h2>
         <p className='max-w-[85%] leading-normal text-muted-foreground sm:text-lg sm:leading-7'>
           Unlock all features including unlimited posts for your blog.
         </p>

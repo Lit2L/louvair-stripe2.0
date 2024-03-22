@@ -1,20 +1,19 @@
 'use client'
 
 import * as React from 'react'
-import useEmblaCarousel, { type UseEmblaCarouselType } from 'embla-carousel-react'
+import useEmblaCarousel, {
+  type EmblaCarouselType as CarouselApi,
+  type EmblaOptionsType as CarouselOptions,
+  type EmblaPluginType as CarouselPlugin
+} from 'embla-carousel-react'
 import { ArrowLeft, ArrowRight } from 'lucide-react'
 
 import { cn } from '@/lib/utils'
-import { Button } from '@/components/ui/button'
-
-type CarouselApi = UseEmblaCarouselType[1]
-type UseCarouselParameters = Parameters<typeof useEmblaCarousel>
-type CarouselOptions = UseCarouselParameters[0]
-type CarouselPlugin = UseCarouselParameters[1]
+import { Button } from './button'
 
 type CarouselProps = {
   opts?: CarouselOptions
-  plugins?: CarouselPlugin
+  plugins?: CarouselPlugin[]
   orientation?: 'horizontal' | 'vertical'
   setApi?: (api: CarouselApi) => void
 }
@@ -187,7 +186,7 @@ const CarouselPrevious = React.forwardRef<HTMLButtonElement, React.ComponentProp
       <Button
         ref={ref}
         variant={variant}
-        size={'sm'}
+        size={size}
         className={cn(
           'absolute  h-8 w-8 rounded-full',
           orientation === 'horizontal'
@@ -215,7 +214,7 @@ const CarouselNext = React.forwardRef<HTMLButtonElement, React.ComponentProps<ty
       <Button
         ref={ref}
         variant={variant}
-        size={'sm'}
+        size={size}
         className={cn(
           'absolute h-8 w-8 rounded-full',
           orientation === 'horizontal'
