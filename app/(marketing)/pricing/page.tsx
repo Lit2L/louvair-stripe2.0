@@ -3,20 +3,21 @@ import { cn } from '@/lib/utils'
 import { buttonVariants } from '@/components/ui/button'
 import { Check } from 'lucide-react'
 import { Label } from '@/components/ui/label'
+import Image from 'next/image'
 
 export const metadata = {
   title: 'Pricing'
 }
 export default function PricingPage() {
   return (
-    <section className='container flex flex-col md:max-w-[64rem] mt-44 bg-slate-400/50 rounded-md border p-6 shadow-gray-600 shadow-2xl'>
+    <section className='container flex flex-col md:max-w-[64rem] mt-44  rounded-md border p-6 shadow-gray-600 shadow-2xl'>
       <div className='flex w-full flex-col gap-4 md:max-w-[58rem] '>
         <h2 className='font-heading text-3xl'>Simple, transparent pricing</h2>
         <p className='max-w-[85%] leading-4 my-3  sm:text-md sm:leading-7'>
           The Louvair members plan.
         </p>
       </div>
-      <div className='grid w-full items-start gap-10 rounded-lg border bg-slate-400/60 p-6 md:grid-cols-[1fr_200px]'>
+      <div className='grid w-full items-start gap-10 rounded-lg border  p-6 md:grid-cols-[1fr_200px]'>
         <div className='grid gap-6'>
           <h3 className='text-xl font-bold sm:text-2xl'>What do you get?</h3>
           <ul className='grid gap-3 text-sm text-muted-foreground sm:grid-cols-2'>
@@ -64,13 +65,15 @@ export default function PricingPage() {
           a member.
           <strong>You can test the upgrade and won&apos;t be charged.</strong>
         </p>
-        <div className='border flex flex-col font-sans font-semibold  space-y-3 w-1/3 p-3 bg-slate-500 my-12 '>
-          <Label className='text-center text-gray-200 text-md '>Use Test Credit Card</Label>
-          <Label className='text-gray-300 text-center text-2xl '>4242 4242 4242 4242</Label>
-          <span className='flex w-full justify-evenly items-center'>
-            <Label className='text-md text-gray-300'>exp: 4/24</Label>
-            <Label className='text-md text-gray-300'>cvc: 424</Label>
-          </span>
+        <div className='w-full flex flex-col items-center justify-center rounded-xl'>
+          <h3 className='text-xl text-green-600 font-bold sm:text-2xl'>Test Card</h3>
+          <Image
+            src='/TESTCARD.png'
+            alt='Test card'
+            width={300}
+            height={200}
+            className='rounded-2xl  m-3 shadow-2xl shadow--gray-300'
+          />
         </div>
       </div>
     </section>

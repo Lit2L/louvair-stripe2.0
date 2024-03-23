@@ -1,29 +1,38 @@
 import { headers } from 'next/headers'
 import Stripe from 'stripe'
+import { buffer } from 'micro'
 
 // import { env } from '../env.mjs'
 import { db } from '@/lib/db'
-import { stripe } from '@/lib/stripe'
+import { NextApiRequest, NextApiResponse } from 'next'
 
-export async function POST(req: Request) {
-  const body = await req.text()
-  const signature = headers().get('Stripe-Signature') as string
+export const config = {
+  api: {
+    bodyParser: false
+  }
+}
+
+const stripe = new Stripe(process.env.STRIPE_API_KEY as string, {
+  apiVersion: '2023-10-16'
+})
+
+export default async function handler(req: NextApiRequest, res: NextApiResponse) {
+  const buf = await buffer(req)
+  const sig = req.headers['stripe-signature']
+
+  if (!sig) return res.status(400).send('Missing the stripe signature')
 
   let event: Stripe.Event
 
   try {
-    event = stripe.webhooks.constructEvent(
-      body,
-      signature,
-      process.env.STRIPE_WEBHOOK_SECRET as string
-    )
-  } catch (error) {
-    return new Response(`Webhook Error: ${error}`)
+    event = stripe.webhooks.constructEvent(buf, sig, process.env.STRIPE_WEBHOOK_SECRET!)
+  } catch (err) {
+    return res.status(400).send('Webhook error' + err)
   }
 
   const session = event.data.object as Stripe.Checkout.Session
 
-  if (event.type === 'checkout.session.completed') {
+  if (event.type === 'customer.subscription.') {
     // Retrieve the subscription details from Stripe.
     const subscription = await stripe.subscriptions.retrieve(session.subscription as string)
 

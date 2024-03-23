@@ -11,10 +11,10 @@ import { cn } from '@/lib/utils'
 import Cart from './Cart'
 import { useCartStore } from '@/zustand/store'
 import { signIn, signOut } from 'next-auth/react'
-import { FiShoppingCart } from 'react-icons/fi'
+import { ShoppingBag } from 'lucide-react'
 import { AnimatePresence, motion } from 'framer-motion'
 import { ThemeToggleButton } from './theme-toggle-button'
-import { Button } from './ui/button'
+import { Button, buttonVariants } from './ui/button'
 import Image from 'next/image'
 interface MainNavProps {
   children?: React.ReactNode
@@ -74,7 +74,7 @@ export function MainNav({ children, items, user }: MainNavProps) {
             className='relative text-3xl cursor-pointer'
             onClick={() => cartStore.toggleCart()}
           >
-            <FiShoppingCart />
+            <ShoppingBag />
             <AnimatePresence>
               {/* Required condition when a component is removed from React tree */}
               {cartStore.cart.length > 0 && (
@@ -90,33 +90,33 @@ export function MainNav({ children, items, user }: MainNavProps) {
             </AnimatePresence>
           </li>
           {/* > If the user is not signed in: */}
-          {!user && (
-            <li className='px-2 py-1 text-sm text-white rounded-md bg-primary'>
-              <button onClick={() => signIn()}>Sign in</button>
-            </li>
-          )}
 
           <li>
             <ThemeToggleButton />
           </li>
-
-          <li>
+          {!user ? (
             <Link
-              className='p-4 rounded-md hover:bg-base-100'
-              href={'/dashboard'}
-              onClick={handleBlurOut}
+              href='/login'
+              className={cn(
+                'font-syncopate px-6 relative text-sm tracking-wider',
+                buttonVariants({ variant: 'outline' })
+              )}
             >
-              My Orders
+              Sign in
             </Link>
-          </li>
-          <li>
-            <Button
-              className='font-syncopate px-6 relative text-sm tracking-wider cursor-pointer'
-              onClick={() => signIn()}
-            >
-              Login
-            </Button>
-          </li>
+          ) : (
+            <li>
+              <Button
+                className={cn(
+                  'font-syncopate px-6 relative text-sm tracking-wider cursor-pointer',
+                  buttonVariants({ variant: 'outline' })
+                )}
+                onClick={() => signOut()}
+              >
+                Logout
+              </Button>
+            </li>
+          )}
         </ul>
       </div>
     </div>

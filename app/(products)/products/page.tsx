@@ -4,12 +4,14 @@ import { HeroSlider } from '@/components/hero-slider'
 
 export async function getProducts() {
   const stripe = new Stripe(process.env.STRIPE_API_KEY as string, {
-    apiVersion: '2022-11-15'
+    apiVersion: '2023-10-16'
   })
   const products = await stripe.products.list()
   // Here we alter the products array to include the prices for each product as
   // well as the product information. The Promise.all() method allows us to run
   // all promises in parallel & wait for them to resolve before returning data.
+
+  products.data.filter((product) => product.metadata.features === 'oil')
   const productsWithPrices = await Promise.all(
     products.data.map(async (product) => {
       const prices = await stripe.prices.list({ product: product.id })
@@ -39,13 +41,15 @@ export default async function ProductsPage() {
     <main className='w-full '>
       <HeroSlider />
 
-      <section className='w-full grid grid-cols-3 mt-6 bg-[#f2f2f2]'>
-        {products.map((product) => (
-          <Product
-            {...product}
-            key={product.id}
-          />
-        ))}
+      <section className='w-full grid py-12 grid-cols-3 gap-3 my-24 bg-[#f2f2f2]'>
+        {products
+          .filter((product) => product.image)
+          .map((product) => (
+            <Product
+              {...product}
+              key={product.id}
+            />
+          ))}
       </section>
     </main>
   )

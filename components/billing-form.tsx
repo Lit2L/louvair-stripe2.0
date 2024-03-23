@@ -31,6 +31,7 @@ export function BillingForm({ subscriptionPlan, className, ...props }: BillingFo
 
     // Get a Stripe session URL.
     const response = await fetch('/api/users/stripe')
+    console.log('response: ', response)
 
     if (!response?.ok) {
       return toast({

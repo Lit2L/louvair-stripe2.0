@@ -1,3 +1,4 @@
+import { headers } from 'next/headers'
 import Stripe from 'stripe'
 import { db } from '@/lib/db'
 import { buffer } from 'micro'
@@ -10,7 +11,7 @@ export const config = {
 }
 
 const stripe = new Stripe(process.env.STRIPE_API_KEY as string, {
-  apiVersion: '2022-11-15'
+  apiVersion: '2023-10-16'
 })
 
 export default async function handler(req: NextApiRequest, res: NextApiResponse) {

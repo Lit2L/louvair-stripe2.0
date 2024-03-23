@@ -28,7 +28,7 @@ export default function LoginPage() {
           </span>
         </>
       </Link>
-      <div className='mx-auto flex flex-col justify-center space-y-6 w-full sm:w-[360px] md:-translate-y-20 border-x border-black/40 px-12'>
+      <div className='mx-auto flex flex-col justify-center space-y-6 w-full min-w-[340px] max-w-[450px] md:-translate-y-20 border-x border-black/40 px-12'>
         <div className='flex flex-col items-center  justify-center gap-3 space-y-2 text-center'>
           <div className='rounded-full'>
             <LogoBrand className='mx-auto h-6 w-6 ' />
