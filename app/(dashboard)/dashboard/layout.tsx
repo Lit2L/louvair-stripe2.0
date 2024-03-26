@@ -1,11 +1,11 @@
 import { dashboardConfig } from '@/config/dashboard'
 
-import { MainNav } from '@/components/main-nav'
-import { DashboardNav } from '@/components/nav'
-import { SiteFooter } from '@/components/site-footer'
+import { MainNav } from '@/components/navigation/main-nav'
+import { DashboardNav } from '@/components/navigation/nav'
 import { getServerSession } from 'next-auth/next'
 import { marketingConfig } from '@/config/marketing'
 import { authOptions } from '@/pages/api/auth/[...nextauth]'
+import Footer from '@/components/Footer'
 
 interface DashboardLayoutProps {
   children?: React.ReactNode
@@ -32,7 +32,7 @@ export default async function DashboardLayout({ children }: DashboardLayoutProps
         </aside>
         <main className='flex w-full flex-1 flex-col overflow-hidden'>{children}</main>
       </div>
-      <SiteFooter />
+      <Footer />
     </div>
   )
 }

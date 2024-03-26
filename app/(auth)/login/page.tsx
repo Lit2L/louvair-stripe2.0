@@ -18,18 +18,18 @@ export default function LoginPage() {
         href='/'
         className={cn(
           buttonVariants({ variant: 'ghost' }),
-          'absolute left-0 top-6 md:left-8 md:top-8'
+          'absolute left-0 top-24 md:left-8 md:top-36'
         )}
       >
         <>
-          <span className='flex h-8 items-center text-lg'>
+          <span className='flex h-8 items-center text-sm underline'>
             <ChevronLeft className='mr-2 h-8 w-8' />
             Back
           </span>
         </>
       </Link>
-      <div className='mx-auto flex flex-col justify-center space-y-6 w-full min-w-[340px] max-w-[450px] md:-translate-y-20 border-x border-black/40 px-12'>
-        <div className='flex flex-col items-center  justify-center gap-3 space-y-2 text-center'>
+      <div className='mx-auto flex flex-col justify-center space-y-6 w-full  max-w-[450px]  border-x border-black/20 px-12'>
+        <div className='flex flex-col items-center justify-center gap-3 space-y-2 text-center'>
           <div className='rounded-full'>
             <LogoBrand className='mx-auto h-6 w-6 ' />
           </div>

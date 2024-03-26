@@ -1,17 +1,9 @@
 const defaultTheme = require('tailwindcss/defaultTheme')
-const colors = require('tailwindcss/colors')
-
-const { default: flattenColorPalette } = require('tailwindcss/lib/util/flattenColorPalette')
 
 /** @type {import('tailwindcss').Config} */
 module.exports = {
-  content: [
-    './app/**/*.{ts,tsx}',
-    './components/**/*.{ts,tsx}',
-    './ui/**/*.{ts,tsx}',
-    './content/**/*.{md,mdx}'
-  ],
   darkMode: ['class'],
+  content: ['./app/**/*.{ts,tsx}', './components/**/*.{ts,tsx}', './ui/**/*.{ts,tsx}'],
 
   theme: {
     container: {
@@ -64,7 +56,9 @@ module.exports = {
       },
       fontFamily: {
         syncopate: ['Syncopate', 'sans-serif'],
-        sans: ['sans', 'sans-serif']
+        cinzel: ['Cinzel', 'sans-serif'],
+        space: ['Space Grotesk', 'sans-serif'],
+        assistant: ['Assistant', 'sans-serif']
       },
       keyframes: {
         'accordion-down': {
@@ -147,18 +141,5 @@ module.exports = {
       }
     }
   },
-  plugins: [
-    require('tailwindcss-animate'),
-    require('@tailwindcss/typography'),
-    addVariablesForColors
-  ]
-}
-
-function addVariablesForColors({ addBase, theme }: any) {
-  let allColors = flattenColorPalette(theme('colors'))
-  let newVars = Object.fromEntries(Object.entries(allColors).map(([key, val]) => [`--${key}`, val]))
-
-  addBase({
-    ':root': newVars
-  })
+  plugins: [require('tailwindcss-animate'), require('@tailwindcss/typography')]
 }

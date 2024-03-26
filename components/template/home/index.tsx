@@ -10,7 +10,7 @@ export default function Home() {
       <Hero />
       <Play />
       <Reel />
-      <div className='w-full h-96 relative'>
+      <div className='w-full h-96 flex flex-col items-center  justify-center relative'>
         <TestimonialSliderComponent />
       </div>
       <Footer />

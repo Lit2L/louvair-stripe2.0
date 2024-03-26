@@ -17,13 +17,7 @@ export default function Hydrate({ children }: HydrateProps) {
 
   return (
     <SessionProvider>
-      {!isHydrated ? (
-        <body className=''></body>
-      ) : (
-        <body className=''>
-          <ThemeProvider>{children}</ThemeProvider>
-        </body>
-      )}
+      {!isHydrated ? <body className=''></body> : <body className=''>{children}</body>}
     </SessionProvider>
   )
 }

@@ -9,8 +9,8 @@ export const siteConfig: SiteConfig = {
   url: site_url,
   ogImage: `${site_url}/og.jpg`,
   links: {
-    facebook: 'https://twitter.com/',
-    instagram: 'https://github.com/'
+    facebook: 'https://facebook.com/',
+    instagram: 'https://instagram.com/'
   }
   // mailSupport: 'support@saas-starter.com'
 }

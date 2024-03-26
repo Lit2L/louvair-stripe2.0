@@ -1,4 +1,4 @@
-import { DashboardHeader } from '@/components/header'
+import { DashboardHeader } from '@/components/dashboard/header'
 import { getServerSession } from 'next-auth'
 import { authOptions } from '@/pages/api/auth/[...nextauth]'
 import priceFormat from '@/lib/priceFormat'

@@ -19,8 +19,9 @@ export default function Footer() {
                 height={40}
               />
             </span>
-            <span className='font-bold text-xl'>L&apos;</span>
-            <span className='text-sm font-bold'>ouvair</span>
+            <h3 className='text-[10px] tracking-widest text-center mt-1 w-full uppercase sm:text-neutral-300 font-syncopate'>
+              L&apos;ouvair
+            </h3>
           </Link>
         </div>
         <div className='col-span-1 lg:col-span-2'>

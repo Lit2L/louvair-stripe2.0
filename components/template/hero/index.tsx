@@ -79,7 +79,7 @@ const Hero: FC = () => {
   return (
     <div
       id='hero-container'
-      className=' smooth-transition'
+      className='smooth-transition'
     >
       <div className='w-full'>
         <div
@@ -89,9 +89,9 @@ const Hero: FC = () => {
           <Image
             fill
             src={HeroImage}
-            alt=' hero'
+            alt='hero'
             ref={backgroundImage}
-            className='hero-image '
+            className='hero-image'
             priority
           />
         </div>
@@ -123,12 +123,12 @@ const Hero: FC = () => {
             </div>
           </h1>
         </div>
-        <div className='flex flex-col items-center w-full gap-10 h-full relative z-20'>
+        <div className='flex flex-col items-center w-full gap-10 h-full relative z-10 font-space tracking-wider'>
           <Link
             href='/dashboard'
             className={cn(
-              'flex items-center w-72 justify-center red-hover',
-              buttonVariants({ variant: 'secondary', size: 'sm' })
+              buttonVariants({ variant: 'secondary', size: 'sm' }),
+              'flex items-center w-72 justify-center red-hover font-light  hover:font-semibold border-2 '
             )}
           >
             Get Started Today!
@@ -136,7 +136,10 @@ const Hero: FC = () => {
 
           <Link
             href='/products'
-            className={cn(buttonVariants({ variant: 'default', size: 'sm' }), 'w-64 red-hover')}
+            className={cn(
+              buttonVariants({ variant: 'default', size: 'sm' }),
+              'w-64 red-hover border-2 border-black/60'
+            )}
           >
             Visit Store
           </Link>

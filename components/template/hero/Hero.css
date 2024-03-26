@@ -18,7 +18,6 @@
   left: 0;
   top: 0;
   height: 100%;
-  background: white;
   max-width: 100%;
   transform: translateY(100vh) translateX(-10vw) rotate(10deg) scale(1.2);
   transform-origin: center;

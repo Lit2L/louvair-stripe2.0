@@ -4,9 +4,11 @@ import React from 'react'
 import Link from 'next/link'
 import { TbBrandFacebookFilled } from 'react-icons/tb'
 import { AiOutlineClose, AiOutlineInstagram, AiOutlineMenu } from 'react-icons/ai'
-import { ThemeToggleButton } from './theme-toggle-button'
+import { ThemeToggle } from '../theme-toggle'
 import { motion } from 'framer-motion'
-import { LogoBrand } from './LogoBrand'
+import { LogoBrand } from '../LogoBrand'
+import { Logo } from '../Logo'
+import { CircleX, SquareChevronRight, SquareX } from 'lucide-react'
 
 const AnimatedLink = motion(Link)
 AnimatedLink.defaultProps = { className: 'red-hover nav-link' }
@@ -31,16 +33,16 @@ const BurgerNav = () => {
   }
 
   return (
-    <div className='fixed md:hidden top-0 left-0 w-full h-[100px] z-[10]  flex items-center justify-between border-4 px-6'>
-      <Link href='/'>
-        <div className='h-14 w-14 z-20 flex flex-col cursor-pointer top-6 left-6 shadow-2xl rounded-full border-2 border-[#69696941] sm:border-none'>
-          <LogoBrand />
+    <div className='fixed top-0 left-0 w-full h-[100px] z-[200]  flex items-center justify-between px-6'>
+      {/* <Link href='/'>
+        <div className='z-20 flex flex-col cursor-pointer top-6 left-6 shadow-2xl rounded-full border-2 border-[#69696941] sm:border-none'>
+          <Logo />
 
           <h3 className='text-[10px] tracking-widest text-center mt-1 w-full uppercase sm:text-neutral-300 font-syncopate'>
             L&apos;ouvair
           </h3>
         </div>
-      </Link>
+      </Link> */}
 
       <div
         onClick={handleNav}
@@ -84,27 +86,27 @@ const BurgerNav = () => {
 
           <div
             onClick={handleNav}
-            className='absolute top-[20px] md:top-[40px] right-[20px] md:right-[40px] rounded-full p-4 cursor-pointer bg-neutral-200 text-neutral-900 hover:opacity-70 duration-300'
+            className='absolute top-[20px] md:top-[40px] left-[20px] md:right-[40px] rounded-sm p-1 cursor-pointer theme-gradient text-white hover:opacity-70 duration-300'
           >
-            <AiOutlineClose size={20} />
+            <SquareChevronRight size={32} />
           </div>
 
           <div
             className={`${
               nav ? 'translate-x-0 opacity-100' : 'translate-x-[200px] opacity-0'
-            } border-b border-[#ba7339] duration-1000 ease-in-out delay-&lsqb;.5s&rsqb`}
+            } border-b border-[#72655f] duration-1000 ease-in-out delay-&lsqb;.5s&rsqb`}
           >
             <p className='text-md text-center text-[#ba7339] my-6'>Aromatic Bliss</p>
           </div>
         </div>
         <div className='flex w-full justify-center items-center h-20 '>
-          <ThemeToggleButton />
+          <ThemeToggle />
         </div>
         <div
           id='middle'
           className='h-1/4 mb-24'
         >
-          <ul className='flex flex-col gap-4 text-neutral-50 text-center font-sans'>
+          <ul className='flex flex-col gap-4 text-neutral-50 font-assistant text-center tracking-widest'>
             <Link href='/'>
               <li
                 onClick={() => setNav(false)}
@@ -144,7 +146,7 @@ const BurgerNav = () => {
                 onClick={() => setNav(false)}
                 className={`${
                   nav ? 'translate-x-0 opacity-100 red-hover' : 'translate-x-[600px] opacity-0'
-                } text-3xl tracking-wider font-medium hover:cursor-pointer duration-1000 ease-in-out delay-&lsqb;1.1s&rsqb`}
+                } text-3xl tracking-wider font-thin hover:cursor-pointer duration-1000 ease-in-out`}
               >
                 About
               </li>
@@ -155,7 +157,7 @@ const BurgerNav = () => {
                 onClick={() => setNav(false)}
                 className={`${
                   nav ? 'translate-x-0 opacity-100 red-hover' : 'translate-x-[600px] opacity-0'
-                } text-3xl tracking-wider font-medium hover:cursor-pointer duration-1000 ease-in-out delay-&lsqb;1.1s&rsqb`}
+                } text-3xl tracking-wider font-medium hover:cursor-pointer duration-1000 ease-in-out`}
               >
                 Contact
               </li>
@@ -166,7 +168,7 @@ const BurgerNav = () => {
                   onClick={() => setNav(false)}
                   className={`${
                     nav ? 'translate-x-0 opacity-100 red-hover' : 'translate-x-[600px] opacity-0'
-                  } text-3xl tracking-wider font-medium hover:cursor-pointer duration-1000 ease-in-out delay-&lsqb;1.1s&rsqb`}
+                  } text-3xl tracking-widest text-[#d4803b] font-semibold hover:cursor-pointer hover:text-sky-800 duration-1000 ease-in-out `}
                 >
                   Login
                 </li>

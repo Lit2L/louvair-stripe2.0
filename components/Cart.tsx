@@ -24,7 +24,7 @@ export default function Cart() {
       animate={{ opacity: 1 }}
       exit={{ opacity: 0 }}
       onClick={() => cartStore.toggleCart()}
-      className='fixed top-0 left-0 right-0 z-50 w-full h-screen bg-black/25 backdrop-blur-sm'
+      className='fixed top-0 left-0 z-50 w-full h-screen bg-black/25 backdrop-blur-sm'
     >
       {/* Shopping Panel */}
       <motion.section

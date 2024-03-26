@@ -8,6 +8,6 @@ export const LogoBrand = ({ ...props }) => (
     height={100}
     width={100}
     {...props}
-    className='h-12 w-12 mx-auto shadow-2xl shadow-[#303036] rounded-full'
+    className='h-12 w-12 rounded-full'
   />
 )

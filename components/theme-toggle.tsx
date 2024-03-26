@@ -1,6 +1,6 @@
 'use client'
 
-import { type ComponentPropsWithRef, type FC } from 'react'
+import { useState, type ComponentPropsWithRef, type FC, useEffect } from 'react'
 
 import type { HTMLMotionProps } from 'framer-motion'
 import { AnimatePresence, motion } from 'framer-motion'
@@ -22,7 +22,7 @@ const IconButton: FC<IconButtonProps> = ({ children, ...props }) => (
 )
 IconButton.displayName = 'IconButton'
 
-export const ThemeToggleButton: FC = () => {
+export const ThemeToggle: FC = () => {
   const { theme, toggleTheme } = useTheme()
   const mounted = useMounted()
 
@@ -35,7 +35,7 @@ export const ThemeToggleButton: FC = () => {
       {isDarkMode ? (
         <IconButton
           key='light-mode'
-          className='overflow-hidden text-gray-400 hover:text-gradient dark:text-gray-300 dark:hover:text-gray-200'
+          className='hover:text-primary-brand overflow-hidden text-dark-400 hover:text-dark-500 dark:text-dark-300 dark:hover:text-dark-200'
           onClick={toggleTheme}
         >
           <MdOutlineLightMode

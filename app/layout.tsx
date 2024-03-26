@@ -1,15 +1,9 @@
 import '../styles/globals.css'
 import '../styles/shared.css'
-import { Syncopate } from 'next/font/google'
+import { Assistant, Space_Grotesk, Syncopate } from 'next/font/google'
 import Hydrate from '@/components/hydrate'
-import { getServerSession } from 'next-auth/next'
-import { authOptions } from '@/pages/api/auth/[...nextauth]'
 import { siteConfig } from '@/config/site'
-import { MainNav } from '@/components/main-nav'
-import Link from 'next/link'
-import { cn } from '@/utils/cn'
-import { buttonVariants } from '@/components/ui/button'
-import { marketingConfig } from '@/config/marketing'
+import { ThemeProvider } from '@/components/theme-provider'
 
 const syncopate = Syncopate({
   weight: ['400', '700'],
@@ -17,6 +11,17 @@ const syncopate = Syncopate({
   variable: '--font-syncopate'
 })
 
+const space_grotesk = Space_Grotesk({
+  weight: ['300', '400', '500', '600', '700'],
+  subsets: ['latin'],
+  variable: '--font-space'
+})
+
+const assistant = Assistant({
+  subsets: ['latin'],
+  display: 'swap',
+  weight: 'variable'
+})
 export const metadata = {
   title: {
     default: siteConfig.name,
@@ -26,33 +31,14 @@ export const metadata = {
   keywords: ['Next.js', 'React', 'Tailwind CSS', 'Server Components', 'Radix UI'],
   authors: [
     {
-      name: 'shadcn',
-      url: 'https://shadcn.com'
+      name: 'Lit2L',
+      url: 'https://lit2l.com'
     }
   ],
-  creator: 'shadcn',
-  themeColor: [
-    { media: '(prefers-color-scheme: light)', color: 'white' },
-    { media: '(prefers-color-scheme: dark)', color: 'black' }
-  ],
-  openGraph: {
-    type: 'website',
-    locale: 'en_US',
-    url: siteConfig.url,
-    title: siteConfig.name,
-    description: siteConfig.description,
-    siteName: siteConfig.name
-  },
-  twitter: {
-    card: 'summary_large_image',
-    title: siteConfig.name,
-    description: siteConfig.description,
-    images: [`${siteConfig.url}/og.jpg`],
-    creator: '@shadcn'
-  },
+  creator: 'lit2l',
+
   icons: {
-    icon: '/favicon.ico',
-    shortcut: '/favicon-16x16.png',
+    icon: '/assets/Logo.png',
     apple: '/apple-touch-icon.png'
   },
   manifest: `${siteConfig.url}/site.webmanifest`
@@ -63,15 +49,15 @@ interface RootLayoutProps {
 }
 
 export default async function RootLayout({ children }: RootLayoutProps) {
-  const session = await getServerSession(authOptions)
-
   return (
     <html
       lang='en'
-      className={`${syncopate.className} `}
+      className={`${syncopate.className} ${assistant.className} ${space_grotesk.className}`}
     >
       <Hydrate>
-        <main className=''>{children}</main>
+        <ThemeProvider>
+          <main className=''>{children}</main>
+        </ThemeProvider>
       </Hydrate>
     </html>
   )

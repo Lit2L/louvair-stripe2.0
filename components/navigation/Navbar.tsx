@@ -1,17 +1,17 @@
 'use client'
 
 import Link from 'next/link'
-import Cart from './Cart'
+import Cart from '../Cart'
 import { MainNavItem } from '@/types'
-import { useCartStore } from '../zustand/store'
+import { useCartStore } from '../../zustand/store'
 import { AnimatePresence, motion } from 'framer-motion'
-import { ThemeToggleButton } from '@/components/theme-toggle-button'
+import { ThemeToggle } from '@/components/theme-toggle'
 import { AiFillShopping } from 'react-icons/ai'
 import { Logo } from '@/components/Logo'
 
 import { useSelectedLayoutSegment } from 'next/navigation'
 
-import { UserAccountNav } from './user-account-nav'
+import { UserAccountNav } from '../user-account-nav'
 import { cn } from '@/lib/utils'
 
 interface MainNavProps {
@@ -77,7 +77,7 @@ export default function Navbar({ children, items }: MainNavProps) {
         </button>
         {/* > If the user is not signed in: */}
 
-        <ThemeToggleButton />
+        <ThemeToggle />
 
         <Link
           className='p-4 rounded-md text-sm font-thin hover:bg-black'

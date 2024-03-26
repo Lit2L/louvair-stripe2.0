@@ -39,7 +39,10 @@ const LoadingScreen: React.FC<LoadingScreenProps> = ({ setLoadingVisible }) => {
   }, [setLoadingVisible])
 
   return (
-    <div className='loading-container center loading-transition' ref={container}>
+    <div
+      className='loading-container center loading-transition'
+      ref={container}
+    >
       <svg
         viewBox='0 0 108 106'
         className='loading-transition'
@@ -47,7 +50,14 @@ const LoadingScreen: React.FC<LoadingScreenProps> = ({ setLoadingVisible }) => {
         data-v-76b59a5e=''
         ref={svg}
       >
-        <rect id='test' x='0' y='0' width='108' height='106' ref={rect}></rect>
+        <rect
+          id='test'
+          x='0'
+          y='0'
+          width='108'
+          height='106'
+          ref={rect}
+        ></rect>
         <path
           fillRule='evenodd'
           clipRule='evenodd'
