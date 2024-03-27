@@ -12,7 +12,7 @@ export default function OrderAnimation() {
         animate={{ opacity: 1, y: 0 }}
         transition={{ delay: 0.5 }}
       >
-        One sec please... ✨
+        Confirming your order...
       </motion.h1>
       <Image
         src={Gif}

@@ -86,8 +86,8 @@ export default async function DashboardPage() {
                   Payment:{' '}
                   <span
                     className={`${
-                      order.status === 'complete' ? 'bg-teal-500' : 'bg-orange-500'
-                    } p-1 text-white rounded-md px-2 mx-2`}
+                      order.status === 'complete' ? 'bg-green-500' : 'bg-blue-800'
+                    } p-1 text-white rounded-md px-2 mx-2 uppercase font-semibold tracking-wide`}
                   >
                     {order.status}
                   </span>

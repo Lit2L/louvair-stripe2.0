@@ -1,32 +1,19 @@
+import { headers } from 'next/headers'
 import Stripe from 'stripe'
+
 import { db } from '@/lib/db'
-import { buffer } from 'micro'
-import { NextApiRequest, NextApiResponse } from 'next'
+import { stripe } from '@/lib/stripe'
 
-// Required to disable body parser, otherwise we get an error from Stripe.
-export const config = {
-  api: {
-    bodyParser: false
-  }
-}
-
-const stripe = new Stripe(process.env.STRIPE_API_KEY as string, {
-  apiVersion: '2023-10-16'
-})
-
-export default async function handler(req: NextApiRequest, res: NextApiResponse) {
-  const buf = await buffer(req)
-
-  const sig = req.headers['stripe-signature']
-
-  if (!sig) return res.status(400).send('Missing the stripe signature')
+export async function POST(req: Request) {
+  const body = await req.text()
+  const signature = headers().get('Stripe-Signature') as string
 
   let event: Stripe.Event
 
   try {
-    event = stripe.webhooks.constructEvent(buf, sig, process.env.STRIPE_WEBHOOK_SECRET!)
-  } catch (err) {
-    return res.status(400).send('Webhook error' + err)
+    event = stripe.webhooks.constructEvent(body, signature, process.env.STRIPE_API_SECRET!)
+  } catch (error) {
+    return new Response(`Webhook Error: ${error}`, { status: 400 })
   }
 
   const session = event.data.object as Stripe.Checkout.Session
@@ -67,24 +54,5 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
     })
   }
 
-  switch (event.type) {
-    case 'payment_intent.created':
-      const paymentIntent = event.data.object
-      console.log('Payment intent was created')
-      break
-
-    case 'charge.succeeded':
-      const charge = event.data.object as Stripe.Charge
-      if (typeof charge.payment_intent === 'string') {
-        const order = await db.order.update({
-          where: { paymentIntentID: charge.payment_intent },
-          data: { status: 'complete' }
-        })
-      }
-      break
-    default:
-      console.log('Unhandled event type:' + event.type)
-  }
-
-  res.json({ received: true })
+  return new Response(null, { status: 200 })
 }

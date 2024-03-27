@@ -15,32 +15,34 @@ import { Label } from '@/components/ui/label'
 export default async function ProductPage({ searchParams }: SearchParamTypes) {
   console.log('searchParams: ', searchParams)
   return (
-    <div className='w-full flex flex-col h-screen items-center justify-center'>
-      <div className='flex justify-center items-center md:flex-row max-w-4xl'>
-        <Card className='shadow-2xl'>
-          <CardHeader>
-            <CardTitle className='text-center'>{searchParams.name}</CardTitle>
-          </CardHeader>
-          <CardContent>
-            <Image
-              src={searchParams.image}
-              alt={searchParams.name}
-              width={600}
-              height={600}
-              className='object-cover w-full rounded-lg '
-              priority={true}
-            />
-          </CardContent>
+    <div className='w-full h-full bg-zinc-300 my-24'>
+      <div className='w-full h-full'>
+        <div className='flex flex-col items-center justify-center sm:flex-row p-12'>
+          <Card className='flex'>
+            <CardHeader>
+              <CardTitle className='text-center'>{searchParams.name}</CardTitle>
+            </CardHeader>
+            <CardContent>
+              <Image
+                src={searchParams.image}
+                alt={searchParams.name}
+                width={600}
+                height={600}
+                className='object-cover w-full rounded-lg '
+                priority={true}
+              />
+            </CardContent>
 
-          <div className='flex justify-center h-min border'>
-            <Label className='text-xl bg-base-200  rounded'>
-              {searchParams.unit_amount && priceFormat(searchParams.unit_amount)}
-            </Label>
-          </div>
-          <div className='h-min mb-12 flex justify-center items-center flex-col'>
-            <AddCartBtn {...searchParams} />
-          </div>
-        </Card>
+            <div className='flex justify-center h-min border'>
+              <Label className='text-xl bg-base-200  rounded'>
+                {searchParams.unit_amount && priceFormat(searchParams.unit_amount)}
+              </Label>
+            </div>
+            <div className='h-min mb-12 flex justify-center items-center flex-col'>
+              <AddCartBtn {...searchParams} />
+            </div>
+          </Card>
+        </div>
       </div>
     </div>
   )

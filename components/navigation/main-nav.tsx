@@ -28,16 +28,15 @@ export function MainNav({ children, items, user }: MainNavProps) {
   const [showMobileNav, setShowMobileNav] = React.useState(false)
 
   const segment = useSelectedLayoutSegment()
+
   const handleBlurOut = () => {
     if (document.activeElement instanceof HTMLElement) {
       document.activeElement.blur()
     }
   }
+
   return (
-    <div
-      id='navbar'
-      className='md:border-y border-y-0 mt-3 py-2 border-neutral-500/20 px-3 nav shadow-sm h-[90px] z-[200]'
-    >
+    <div className='md:border-y border-y-0 border-neutral-500 px-3 nav shadow-sm h-[80px] z-[200]'>
       <div className='hidden md:flex md:flex-col md:items-center md:justify-center'>
         <Link
           href='/'
@@ -51,14 +50,14 @@ export function MainNav({ children, items, user }: MainNavProps) {
       </div>
 
       {/* Mobile Menu Button */}
-      {/* <div className='flex items-center justify-between md:hidden z-50'>
+      <div className='flex items-center justify-between md:hidden z-50'>
         <button
           onClick={() => setShowMobileNav((prev) => !prev)}
           className='p-2 text-2xl text-neutral-500'
         >
           {showMobileNav ? <BurgerNav /> : ''}
         </button>
-      </div> */}
+      </div>
       <div className='border-black/20 rounded-none px-4 py-2 md:border-y sm:border-y-0 shadow-2xl shadow-neutral-600 translate-x-16'>
         {items?.length ? (
           <nav className='hidden gap-6 md:flex '>
@@ -111,7 +110,7 @@ export function MainNav({ children, items, user }: MainNavProps) {
             <ThemeToggle />
           </li>
           <li>
-            {!user ? (
+            {!user && (
               <Link
                 href='/login'
                 className={cn(
@@ -121,11 +120,12 @@ export function MainNav({ children, items, user }: MainNavProps) {
               >
                 Sign in
               </Link>
-            ) : (
+            )}
+            {user && (
               <Button
                 className={cn(
-                  'font-syncopate px-3 relative text-sm tracking-wider cursor-pointer',
-                  buttonVariants({ variant: 'outline' })
+                  'font-assistant uppercase relative border-2 border-slate-500/50 text-sm tracking-wider',
+                  buttonVariants({ variant: 'ghost', size: 'sm' })
                 )}
                 onClick={() => signOut()}
               >
@@ -134,6 +134,10 @@ export function MainNav({ children, items, user }: MainNavProps) {
             )}
           </li>
         </ul>
+        <AnimatePresence>
+          {/* Required condition when a component is removed from React tree */}
+          {cartStore.isOpen && <Cart />}
+        </AnimatePresence>
       </div>
     </div>
   )

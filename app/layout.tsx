@@ -4,6 +4,10 @@ import { Assistant, Space_Grotesk, Syncopate } from 'next/font/google'
 import Hydrate from '@/components/hydrate'
 import { siteConfig } from '@/config/site'
 import { ThemeProvider } from '@/components/theme-provider'
+import { TailwindIndicator } from '@/components/tailwind-indicator'
+import { ThemeToggle } from '@/components/theme-toggle'
+import { Toaster } from '@/components/ui/toaster'
+import { Analytics } from '@/components/analytics'
 
 const syncopate = Syncopate({
   weight: ['400', '700'],
@@ -55,9 +59,16 @@ export default async function RootLayout({ children }: RootLayoutProps) {
       className={`${syncopate.className} ${assistant.className} ${space_grotesk.className}`}
     >
       <Hydrate>
-        <ThemeProvider>
+        <ThemeProvider
+          attribute='class'
+          defaultTheme='system'
+          enableSystem
+        >
           <main className=''>{children}</main>
+          <Analytics />
         </ThemeProvider>
+        <Toaster />
+        <TailwindIndicator />
       </Hydrate>
     </html>
   )

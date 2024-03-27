@@ -84,11 +84,11 @@ export function UserAuthForm({ className, ...props }: UserAuthFormProps) {
 
   return (
     <div
-      className={cn('grid gap-6', className)}
+      className={cn('grid gap-6 font-space', className)}
       {...props}
     >
       <form onSubmit={handleSubmit(onSubmit)}>
-        <div className='grid gap-2'>
+        <div className='grid gap-2 font-space'>
           <div className='grid gap-1'>
             <Label
               className='sr-only'
@@ -128,7 +128,7 @@ export function UserAuthForm({ className, ...props }: UserAuthFormProps) {
       </div>
       <Button
         type='button'
-        className='border-4 border-black flex items-center justify-center gap-3'
+        className='border-black flex items-center justify-center gap-3'
         onClick={handleGoogleSignIn}
         disabled={isLoading || isGoogleLoading}
       >

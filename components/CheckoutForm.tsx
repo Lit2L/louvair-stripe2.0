@@ -1,13 +1,16 @@
 'use client'
 
 import { useState, useEffect, FormEvent } from 'react'
+
 import { PaymentElement, useStripe, useElements } from '@stripe/react-stripe-js'
+
+import { useCartStore } from '@/zustand/store'
 import priceFormat from '@/lib/priceFormat'
-import { useCartStore } from '../zustand/store'
 
 interface Props {
   clientSecret: string
 }
+
 export default function CheckoutForm({ clientSecret }: Props) {
   const [isLoading, setIsLoading] = useState(false)
   const stripe = useStripe()
@@ -22,15 +25,12 @@ export default function CheckoutForm({ clientSecret }: Props) {
   useEffect(() => {
     if (!stripe) return
     if (!clientSecret) return
-  }, [stripe, clientSecret])
+  }, [stripe])
 
   const handleSubmit = async (e: FormEvent) => {
     e.preventDefault()
-    if (!stripe || !elements) {
-      return
-    }
+    if (!stripe || !elements) return
     setIsLoading(true)
-
     stripe
       .confirmPayment({
         elements,
@@ -46,7 +46,6 @@ export default function CheckoutForm({ clientSecret }: Props) {
 
   return (
     <form
-      className='text-gray-600'
       onSubmit={handleSubmit}
       id='payment-form'
     >
@@ -54,13 +53,13 @@ export default function CheckoutForm({ clientSecret }: Props) {
         id='payment-element'
         options={{ layout: 'tabs' }}
       />
-      <h1 className='py-4 text-sm font-bold'>Total: {priceFormat(totalPrice)} </h1>
+      <h1 className='py-4 mt-4 text-sm font-semibold '>Total: {priceFormat(totalPrice)}</h1>
       <button
-        className={`bg-primary py-2 mt-4 w-full rounded-md text-white disabled:opacity-25`}
         id='submit'
         disabled={isLoading || !stripe || !elements}
+        className='w-full my-4 btn btn-primary'
       >
-        {isLoading ? <span>Processing...</span> : <span>Pay now </span>}
+        {isLoading ? <span>Processing</span> : <span>Pay now</span>}
       </button>
     </form>
   )

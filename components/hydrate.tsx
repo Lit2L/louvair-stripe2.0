@@ -2,7 +2,6 @@
 
 import { SessionProvider } from 'next-auth/react'
 import { ReactNode, useEffect, useState } from 'react'
-import { ThemeProvider } from './theme-provider'
 
 interface HydrateProps {
   children: ReactNode

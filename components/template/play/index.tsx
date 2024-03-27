@@ -104,12 +104,14 @@ const Play: React.FC = () => {
       className='column content-width overflow-auto max-w-full pt-24'
       id='work-section'
     >
-      <div className='overflow-hidden ml-12'>
+      <div className='overflow-hidden flex w-full flex-col ml-12'>
         <h1
           className='text-5xl text-slate-600 font-bold my-12'
           ref={heading}
         >
-          Be Playful
+          Create
+          <span className='text-orange-400'>A </span>
+          <span className='text-red-900'>Space</span>
         </h1>
       </div>
       <div className='row'>
@@ -121,8 +123,8 @@ const Play: React.FC = () => {
         >
           <Image
             src='/work/greenyellow.jpeg'
-            height='3113'
-            width='500'
+            height='113'
+            width='200'
             alt='Ottografie'
             loading='lazy'
           />
@@ -139,6 +141,14 @@ const Play: React.FC = () => {
               type='video/mp4'
             />
           </video>
+          <div className='overflow-hidden flex w-full flex-col ml-12'>
+            <h1
+              className='text-5xl text-slate-600 font-bold my-12'
+              ref={heading}
+            >
+              Press <span className='text-red-900'>Play</span>
+            </h1>
+          </div>
           <div className='text-wrapper'>
             <p>
               <span>
@@ -162,9 +172,9 @@ const Play: React.FC = () => {
             >
               <path d='M7.41908 4.56679L6.13722 0L4.85418 4.92566L0 6L4.85418 7.25435L6.13722 12L7.3276 7.25435L12 6L7.41908 4.56679Z'></path>
             </svg>
-            <span>Featured Products</span>
+            <span className='text-emerald-600'>Featured Products</span>
           </div>
-          <p className='text-black '>
+          <p className='text-stone-500 font-space text-sm'>
             Highlights of cases that we
             <br />
             passionately built with forward-
@@ -184,8 +194,9 @@ const Play: React.FC = () => {
               alt='image play'
               src='/work/black.jpeg'
               height='3113'
-              width='500'
+              width='1000'
             />
+
             <video
               playsInline={true}
               loop={true}
@@ -206,6 +217,14 @@ const Play: React.FC = () => {
                 </span>
                 <span>Immersive photography portfolio</span>
               </p>
+            </div>
+            <div className='overflow-hidden flex w-full flex-col ml-12'>
+              <h1
+                className='text-5xl text-slate-600 font-bold my-12'
+                ref={heading}
+              >
+                Press <span className='text-red-900'>Play</span>
+              </h1>
             </div>
           </div>
         </div>

@@ -1,19 +1,18 @@
 import Hero from '@/components/template/hero'
-import Footer from '@/components/Footer'
+
 import TestimonialSliderComponent from '@/components/testimonials/testimonial-slider-component'
 import Reel from '../reel'
 import Play from '@/components/template/play'
 
 export default function Home() {
   return (
-    <div>
+    <div className='max-w-screen'>
       <Hero />
       <Play />
       <Reel />
-      <div className='w-full h-96 flex flex-col items-center  justify-center relative'>
+      <div className='max-w-screen overflow-hidden h-96 grid grid-cols-1   items-center w-min justify-center '>
         <TestimonialSliderComponent />
       </div>
-      <Footer />
     </div>
   )
 }

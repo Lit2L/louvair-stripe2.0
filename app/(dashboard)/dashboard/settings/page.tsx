@@ -24,7 +24,7 @@ export default async function SettingsPage() {
         heading='Settings'
         text='Manage account and website settings.'
       />
-      <div className='grid gap-10'>
+      <div className='font-assistant tracking-wide grid gap-10'>
         <UserNameForm user={{ id: user.id, name: user.name || '' }} />
       </div>
     </DashboardShell>

@@ -57,7 +57,7 @@ const testimonials = [
 const TestimonialSliderComponent: FC = () => {
   return (
     <main className='absolute'>
-      <div className='container'>
+      <div className='container overflow-hidden'>
         <h1 className='font-sans font-bold text-2xl ml-6'>Testimonials</h1>
         <TestimonialSlider testimonials={testimonials} />
       </div>

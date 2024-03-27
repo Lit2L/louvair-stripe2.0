@@ -8,7 +8,7 @@ import { ThemeToggle } from '../theme-toggle'
 import { motion } from 'framer-motion'
 import { LogoBrand } from '../LogoBrand'
 import { Logo } from '../Logo'
-import { CircleX, SquareChevronRight, SquareX } from 'lucide-react'
+import { AlignLeft, CircleX, SquareChevronRight, SquareX } from 'lucide-react'
 
 const AnimatedLink = motion(Link)
 AnimatedLink.defaultProps = { className: 'red-hover nav-link' }
@@ -33,23 +33,22 @@ const BurgerNav = () => {
   }
 
   return (
-    <div className='fixed top-0 left-0 w-full h-[100px] z-[200]  flex items-center justify-between px-6'>
-      {/* <Link href='/'>
-        <div className='z-20 flex flex-col cursor-pointer top-6 left-6 shadow-2xl rounded-full border-2 border-[#69696941] sm:border-none'>
-          <Logo />
+    <div className='fixed top-0 left-0 w-full h-[100px] z-[200] flex items-center justify-between px-6'>
+      <div className='z-20 md:hidden flex flex-col cursor-pointer top-6 left-6 shadow-2xl rounded-full border-[#69696941] sm:border-none'>
+        <Link href='/'>
+          <LogoBrand />
 
           <h3 className='text-[10px] tracking-widest text-center mt-1 w-full uppercase sm:text-neutral-300 font-syncopate'>
             L&apos;ouvair
           </h3>
-        </div>
-      </Link> */}
-
+        </Link>
+      </div>
       <div
         onClick={handleNav}
         className='flex gap-3 text-black red-hover w-32'
       >
         <span className='font-syncopate'>MENU</span>
-        <AiOutlineMenu
+        <AlignLeft
           size={25}
           className=''
         />
@@ -74,7 +73,7 @@ const BurgerNav = () => {
               <span className='text-white'>L&apos;</span>ouvair
             </h2>
           </div>
-          {/* <div
+          <div
             className={`${
               nav ? 'flex w-full mt-12 opacity-100' : 'translate-x-[200px] opacity-0'
             } lg:hidden w-[95px] lg:w-[105px] h-[40px] overflow-visible flex items-center cursor-pointer duration-1000 ease-in-out `}
@@ -82,7 +81,7 @@ const BurgerNav = () => {
             <h2 className='whitespace-nowrap ml-0 h-full w-full font-bold red-hover text-5xl text-center'>
               <span className='text-white'>L&apos;</span>ouvair
             </h2>
-          </div> */}
+          </div>
 
           <div
             onClick={handleNav}
@@ -217,15 +216,6 @@ const BurgerNav = () => {
             </div>
           </div>
         </div>
-      </div>
-
-      <div
-        onClick={handleNav}
-        className={`${desktopMenu ? 'opacity-100' : 'opacity-0 z-[-2]'} fixed ${
-          nav ? 'z-[-2]' : 'z-[-1]'
-        } top-[20px] md:top-[40px] right-[20px] md:right-[40px] rounded-full p-6 cursor-pointer bg-neutral-900/80 text-neutral-50 hover:scale-110 duration-500`}
-      >
-        <AiOutlineMenu size={20} />
       </div>
     </div>
   )

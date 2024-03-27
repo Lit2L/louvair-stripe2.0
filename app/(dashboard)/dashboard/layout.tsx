@@ -5,34 +5,47 @@ import { DashboardNav } from '@/components/navigation/nav'
 import { getServerSession } from 'next-auth/next'
 import { marketingConfig } from '@/config/marketing'
 import { authOptions } from '@/pages/api/auth/[...nextauth]'
-import Footer from '@/components/Footer'
+import { SiteFooter } from '@/components/site-footer'
+import { UserAccountNav } from '@/components/user-account-nav'
 
 interface DashboardLayoutProps {
   children?: React.ReactNode
 }
 
 export default async function DashboardLayout({ children }: DashboardLayoutProps) {
-  const session = await getServerSession(authOptions)
-
-  // if (!user) {
-  //   redirect('/login')
-  // }
-
+  const getUser = await getServerSession(authOptions)
+  const user = getUser?.user
   return (
-    <div className='flex flex-col h-screen space-y-4 font-sans relative'>
-      <header className='fixed flex h-20 items-center w-full pr-6 justify-between py-4 z-40'>
-        <MainNav
-          user={{ id: session?.user.id as string, name: session?.user.name as string }}
-          items={marketingConfig.mainNav}
-        />
+    <div className='flex min-h-screen flex-col space-y-6'>
+      <header className='sticky top-0 z-40 border-b bg-background'>
+        <div className='container flex h-16 items-center justify-between py-4'>
+          <MainNav
+            user={{ id: user?.id as string, name: user?.name as string }}
+            items={marketingConfig.mainNav}
+          />
+        </div>
+        {/*  */}
       </header>
-      <div className='container grid flex-1 gap-12 pt-20 md:grid-cols-[150px_1fr]'>
-        <aside className='hidden w-[180px] flex-col md:flex bg-neutral-600 font-thin text-neutral-600'>
+      <div className='container grid h-full flex-1 gap-12  md:grid-cols-[180px_1fr] lg:grid-cols-[200px_1fr] xl:grid-cols-[240px_1fr]'>
+        <aside className='hidden w-[180px] duration-200 md:w-[200px] lg:w-[220px] xl:w-[260px] flex-col md:flex bg-neutral-600 font-thin text-neutral-600'>
           <DashboardNav items={dashboardConfig.sidebarNav} />
+          <div className='border flex items-end justify-end h-full '>
+            <div className='items-center justify-end w-full gap-3 flex'>
+              <p className='text-lg font-semibold font-space text-white'>{user?.name}</p>
+
+              <UserAccountNav
+                user={{
+                  name: user?.name,
+                  image: user?.image,
+                  email: user?.email
+                }}
+              />
+            </div>
+          </div>
         </aside>
         <main className='flex w-full flex-1 flex-col overflow-hidden'>{children}</main>
       </div>
-      <Footer />
+      <SiteFooter className='border-t' />
     </div>
   )
 }

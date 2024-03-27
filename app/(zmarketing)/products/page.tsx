@@ -39,14 +39,14 @@ export default async function ProductsPage() {
   const productImages = products.map((images) => images.image)
   return (
     <main className='w-full min-h-screen mt-24'>
-      <div className='w-full h-full flex flex-col'>
+      <div className=''>
         <HeroSlider />
       </div>
       <section className='w-full h-full grid py-12 grid-cols-3 gap-3 my-24 bg-[#f2f2f2]'>
-        {products.map((product, index) => (
+        {products.map((product) => (
           <Product
             {...product}
-            key={index}
+            key={product.id}
           />
         ))}
       </section>

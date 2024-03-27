@@ -40,11 +40,11 @@ export default function TestimonialSlider({ testimonials }: TestimonialSliderPro
                   key={index}
                   className='md:basis-1/2 lg:basis-1/3'
                 >
-                  <div className='flex flex-col px-4 py-5 sm:p-6 '>
-                    <q className='flex-1 text-gray-600 dark:text-gray-300 font-sans'>
+                  <div className='flex flex-col px-4 py-5 sm:p-6 max-w-md'>
+                    <q className='flex-1 text-gray-600 dark:text-gray-300 font-assistant text-left mx-auto max-w-md'>
                       {testimonial.quote}
                     </q>
-                    <div className='mt-6 flex gap-3'>
+                    <div className='mt-6 flex gap-3 justify-center items-center'>
                       <span className='inline-flex rounded-full'>
                         <Image
                           loader={imageLoader}
@@ -56,8 +56,8 @@ export default function TestimonialSlider({ testimonials }: TestimonialSliderPro
                           loading='lazy'
                         />
                       </span>
-                      <div>
-                        <p className='text-sm font-serif  font-semibold text-gray-900 dark:text-white'>
+                      <div className='text-center'>
+                        <p className='text-sm font-serif font-semibold text-gray-900 dark:text-white'>
                           {testimonial.name}
                         </p>
                         <p className='text-sm text-gray-500 font-sans dark:text-gray-400'>

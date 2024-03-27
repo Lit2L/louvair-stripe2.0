@@ -51,10 +51,10 @@ export default async function BillingPage() {
       <div className='grid gap-8 font-sans '>
         <Alert className='!pl-14'>
           <FileWarning />
-          <AlertTitle>This is a demo app.</AlertTitle>
+          <AlertTitle>Louvair is in Test mode.</AlertTitle>
           <AlertDescription>
-            L&apos;ouvair app is a demo app using a Stripe test environment. You can find a list of
-            test card numbers on the{' '}
+            L&apos;ouvair has partnered with Stripe to ensure the most secure and private payments.
+            You can find a list of test card numbers on the{' '}
             <a
               href='https://stripe.com/docs/testing#cards'
               target='_blank'

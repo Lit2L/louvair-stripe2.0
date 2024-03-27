@@ -18,12 +18,12 @@ export default function AddCartBtn({ id, name, image, unit_amount, quantity }: A
   }
 
   return (
-    <button
+    <Button
       onClick={handleAddToCart}
-      className='px-6 py-2 backdrop-blur-md border bg-slate-700 border-gray-300/20 text-white mx-auto text-center rounded-full mt-24'
+      className='px-6 py-2  border bg-neutral-700 border-gray-300/20 text-amber-400 mx-auto text-center  mt-24'
       disabled={added}
     >
       {!added ? <span>Add to cart </span> : <span>Adding to cart</span>}
-    </button>
+    </Button>
   )
 }
