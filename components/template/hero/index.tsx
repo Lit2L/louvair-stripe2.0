@@ -138,10 +138,10 @@ const Hero: FC = () => {
             href='/products'
             className={cn(
               buttonVariants({ variant: 'default', size: 'sm' }),
-              'w-64 red-hover border-2 border-black/60'
+              'w-64 yellow-hover border-2 border-black/60'
             )}
           >
-            Visit Store
+            See Collection
           </Link>
         </div>
       </div>

@@ -65,22 +65,23 @@ export default async function DashboardPage() {
 
   return (
     <>
-      <Separator />
-      <div className='font-sans mt-6'>
+      <div className='font-assistant'>
         <DashboardShell>
           <DashboardHeader
             heading='Dashboard'
             text='Store and manage User account.'
           >
-            Your Orders
+            Purchase History
           </DashboardHeader>
-          <div className='flex flex-col gap-4 mt-6'>
+          <Separator />
+          <div className='flex flex-col gap-4'>
             {orders?.map((order) => (
               <div
                 key={order.id}
-                className='relative flex flex-col gap-1 p-2 px-4 rounded-lg shadow-sm bg-base-200'
+                className='relative flex flex-col gap-1 p-3 rounded-lg shadow-sm bg-secondary'
               >
                 <h2>Order: {order.id}</h2>
+
                 <p className='text-[12px]'>{today(order.createdDate)}</p>
                 <p className='absolute text-[13px] top-4 right-3'>
                   Payment:{' '}
@@ -100,15 +101,17 @@ export default async function DashboardPage() {
                       className='flex items-center gap-4 py-1'
                     >
                       <Image
-                        className='object-cover rounded-full w-9 h-9'
+                        className='object-cover bg-primary rounded-full w-12 h-12'
                         src={product.image!}
                         alt={product.name}
-                        width={36}
-                        height={36}
+                        width={44}
+                        height={44}
                         priority
                       />
                       <div className='flex flex-col'>
-                        <h4 className='text-sm font-semibold'>{product.name}</h4>
+                        <h4 className='text-md text-card-foreground font-semibold'>
+                          {product.name}
+                        </h4>
                         <p className='text-sm'>
                           {product.quantity} x {priceFormat(product.unit_amount)}
                         </p>
@@ -116,6 +119,7 @@ export default async function DashboardPage() {
                     </div>
                   ))}
                 </div>
+                <p className='text-sm font-semibold'>Total: {priceFormat(order.amount)}</p>
               </div>
             ))}
           </div>

@@ -30,7 +30,7 @@ export function BillingForm({ subscriptionPlan, className, ...props }: BillingFo
     setIsLoading(!isLoading)
 
     // Get a Stripe session URL.
-    const response = await fetch('/api/users/stripe')
+    const response = await fetch('/pages/api/users/stripe')
     console.log('response: ', response)
 
     if (!response?.ok) {

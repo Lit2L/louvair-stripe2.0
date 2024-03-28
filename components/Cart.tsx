@@ -36,7 +36,7 @@ export default function Cart() {
         {/* Conditional Headings */}
         {cartStore.onCheckout === 'cart' && (
           <div className='flex items-center justify-between mb-12'>
-            <h1 className='text-2xl font-bold'>Your shopping cart</h1>
+            <h1 className='text-2xl font-space font-'>Your shopping Cart</h1>
             <CgClose
               className='w-6 h-6 cursor-pointer'
               onClick={() => cartStore.toggleCart()}
@@ -125,7 +125,7 @@ export default function Cart() {
               priority
               className='object-cover'
             />
-            <h2 className='text-lg font-semibold'>Ohh no its empty :(</h2>
+            <h2 className='text-lg font-semibold font-space'>0 items in your bag</h2>
           </motion.div>
         )}
       </motion.section>

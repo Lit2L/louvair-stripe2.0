@@ -114,7 +114,7 @@ export function MainNav({ children, items, user }: MainNavProps) {
               <Link
                 href='/login'
                 className={cn(
-                  'font-assistant uppercase relative border-2 border-slate-500/50 text-sm tracking-wider',
+                  'font-assistant uppercase relative border-2 border-slate-500/50 text-xs tracking-wider',
                   buttonVariants({ variant: 'ghost' })
                 )}
               >
@@ -124,7 +124,7 @@ export function MainNav({ children, items, user }: MainNavProps) {
             {user && (
               <Button
                 className={cn(
-                  'font-assistant uppercase relative border-2 border-slate-500/50 text-sm tracking-wider',
+                  'font-assistant uppercase relative border-2 border-slate-500/50 text-xs tracking-wider',
                   buttonVariants({ variant: 'ghost', size: 'sm' })
                 )}
                 onClick={() => signOut()}

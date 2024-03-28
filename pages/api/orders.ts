@@ -1,11 +1,11 @@
 import { NextApiRequest, NextApiResponse } from 'next'
 import Stripe from 'stripe'
 import { getServerSession } from 'next-auth'
-import { authOptions } from '@/pages/api/auth/[...nextauth]'
+import { authOptions } from '@/pages/api/auth/[...nextauth]/route'
 import { db } from '@/lib/db'
 
-const stripe = new Stripe(process.env.STRIPE_API_KEY as string, {
-  apiVersion: '2023-10-16'
+const stripe = new Stripe(process.env.STRIPE_SECRET_KEY as string, {
+  apiVersion: '2022-11-15'
 })
 
 export default async function handler(res: NextApiResponse, req: NextApiRequest) {

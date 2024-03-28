@@ -62,13 +62,12 @@ export default async function RootLayout({ children }: RootLayoutProps) {
         <ThemeProvider
           attribute='class'
           defaultTheme='system'
-          enableSystem
         >
           <main className=''>{children}</main>
           <Analytics />
+          <Toaster />
+          <TailwindIndicator />
         </ThemeProvider>
-        <Toaster />
-        <TailwindIndicator />
       </Hydrate>
     </html>
   )

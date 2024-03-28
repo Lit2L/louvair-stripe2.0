@@ -14,31 +14,34 @@ export const authOptions: NextAuthOptions = {
       clientSecret: process.env.GOOGLE_CLIENT_SECRET as string
     })
   ],
+  pages: {
+    signIn: '/api/auth/[...nextauth].ts'
+  },
   events: {
     createUser: async ({ user }) => {
-      const stripe = new Stripe(process.env.STRIPE_API_KEY as string, {
-        apiVersion: '2023-10-16'
+      const stripe = new Stripe(process.env.STRIPE_SECRET_KEY as string, {
+        apiVersion: '2022-11-15'
       })
       //Let's create a stripe customer
 
-      const costumer = await stripe.customers.create({
-        email: user.email || undefined,
-        name: user.name || undefined
-      })
+      await stripe.customers
+        .create({
+          email: user.email!,
+          name: user.name!
+        })
+        .then(async (customer) => {
+          return db.user.update({
+            where: { id: user.id },
+            data: {
+              stripeCustomerId: customer.id
+            }
+          })
+        })
       //Also update our prisma user with the stripecustomerid
-
-      await db.user.update({
-        where: { id: user.id },
-        data: { stripeCustomerId: costumer.id }
-      })
-    }
-  },
-  callbacks: {
-    async session({ session, token, user }) {
-      session.user = user
-      return session
     }
   }
 }
 
-export default NextAuth(authOptions)
+const handler = NextAuth(authOptions)
+
+export { handler as GET, handler as POST }

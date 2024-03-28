@@ -6,9 +6,9 @@ interface DashboardHeaderProps {
 
 export function DashboardHeader({ heading, text, children }: DashboardHeaderProps) {
   return (
-    <div className='flex items-center justify-between px-2 mt-12 font-assistant '>
-      <div className='grid gap-1 font-assistant'>
-        <h1 className='font-bold text-6xl md:text-4xl'>{heading}</h1>
+    <div className='flex items-center justify-between px-2 font-assistant border-b'>
+      <div className='grid gap-1 font-assistant '>
+        <h1 className='font-bold text-6xl md:text-4xl '>{heading}</h1>
         {text && <p className='text-lg  font-assistant  text-muted-foreground'>{text}</p>}
       </div>
       {children}

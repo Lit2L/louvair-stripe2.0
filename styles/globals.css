@@ -90,6 +90,10 @@
   @apply hover:text-red-900 cursor-pointer hover:duration-300 transition-all hover:scale-95;
 }
 
+.yellow-hover {
+  @apply hover:text-yellow-500 cursor-pointer hover:duration-300 transition-all hover:scale-95;
+}
+
 .instagram-gradient {
   @apply bg-gradient-to-r from-[#833ab4] via-[#fd1d1d] to-[#fcb045];
 }

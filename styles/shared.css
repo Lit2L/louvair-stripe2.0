@@ -1,3 +1,16 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  -webkit-tap-highlight-color: transparent;
+}
+
+html {
+  height: 100%;
+  -webkit-font-smoothing: antialiased;
+  font-family: 'Lausanne';
+}
+
 body {
   text-size-adjust: 100%;
   text-rendering: optimizeSpeed;
@@ -36,7 +49,7 @@ body {
   left: 0;
   width: 100%;
   background: rgba(255, 255, 255, 0.1) !important;
-  backdrop-filter: blur(6px);
+  backdrop-filter: blur(10px);
   z-index: 900;
   display: flex;
   justify-content: space-between;
@@ -85,49 +98,6 @@ body {
   );
 }
 
-.theme1 {
-  background: #cecdc9;
-}
-.theme2 {
-  background: #baaf9b;
-}
-.theme3 {
-  background: #ded7cd;
-}
-.theme4 {
-  background: #dbdad8;
-}
-.theme5 {
-  background: #bab7b0;
-}
-.theme6 {
-  background: #c4c4c2;
-}
-.theme7 {
-  background: #b7bbaa;
-}
-.theme8 {
-  background: #949782;
-}
-.theme9 {
-  background: #9c9076;
-}
-.theme10 {
-  background: #948e76;
-}
-.theme11 {
-  background: #72655f;
-}
-.theme12 {
-  background: #958866;
-}
-.theme13 {
-  background: #a2985d;
-}
-.theme14 {
-  background: #a6987b;
-}
-
 .theme-gradient {
   background: linear-gradient(
     to right,
@@ -152,4 +122,18 @@ body {
   /* IE and Edge */
   -width: none;
   /* Firefox */
+}
+
+.glass-card {
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border-radius: 10px;
+  padding: 20px;
+  color: #fff;
+  text-align: center;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  display: flex;
+  flex-direction: column;
 }

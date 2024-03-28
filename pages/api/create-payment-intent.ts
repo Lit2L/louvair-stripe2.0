@@ -2,12 +2,12 @@ import { NextApiRequest, NextApiResponse } from 'next'
 
 import Stripe from 'stripe'
 import { db } from '@/lib/db'
-import { authOptions } from '@/pages/api/auth/[...nextauth]'
+import { authOptions } from '@/pages/api/auth/[...nextauth]/route'
 import { getServerSession } from 'next-auth'
 import { AddCartType } from '@/types/AddCartType'
 
-const stripe = new Stripe(process.env.STRIPE_API_KEY as string, {
-  apiVersion: '2023-10-16'
+const stripe = new Stripe(process.env.STRIPE_SECRET_KEY as string, {
+  apiVersion: '2022-11-15'
 })
 
 const calcOrderAmount = (items: AddCartType[]) => {

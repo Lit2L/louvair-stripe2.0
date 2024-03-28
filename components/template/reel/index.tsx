@@ -45,7 +45,10 @@ const Reel: React.FC = () => {
   }
 
   return (
-    <div id='reel-wrapper'>
+    <div
+      id='reel-wrapper'
+      className='w-full hidden md:flex md:flex-col'
+    >
       <div
         id='reel-container'
         className='center column'

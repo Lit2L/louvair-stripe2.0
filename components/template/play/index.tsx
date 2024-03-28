@@ -101,7 +101,7 @@ const Play: React.FC = () => {
 
   return (
     <section
-      className='column content-width overflow-auto max-w-full pt-24'
+      className='flex flex-col w-full content-width overflow-auto max-w-full  pt-24'
       id='work-section'
     >
       <div className='overflow-hidden flex w-full flex-col ml-12'>
@@ -110,8 +110,8 @@ const Play: React.FC = () => {
           ref={heading}
         >
           Create
-          <span className='text-orange-400'>A </span>
-          <span className='text-red-900'>Space</span>
+          <span className='text-red-900 dark:text-orange-400'> A </span>
+          <span className='dark:text-red-900 text-green-700'>Space</span>
         </h1>
       </div>
       <div className='row'>

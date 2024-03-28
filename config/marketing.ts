@@ -3,7 +3,7 @@ import { MarketingConfig } from 'types'
 export const marketingConfig: MarketingConfig = {
   mainNav: [
     {
-      title: 'Products',
+      title: 'Collections',
       href: '/products'
     },
     {
@@ -12,10 +12,6 @@ export const marketingConfig: MarketingConfig = {
     },
     {
       title: 'Dashboard',
-      href: '/dashboard'
-    },
-    {
-      title: 'My Orders',
       href: '/dashboard'
     }
   ]
